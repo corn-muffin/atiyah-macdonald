@@ -16,37 +16,18 @@
 %\graphicspath{ {./diagrams/} }
 
 \input{./latex-preamble/cm-preamble.tex}
-%\newcommand{\A}{{\mathds A}}
-\newcommand{\RP}{{\R P}}
-\newcommand{\CP}{{\CC P}}
-\DeclareMathOperator{\Mat}{Mat}
-\DeclareMathOperator{\codim}{codim}
-\newcommand{\Frac}{\mbox{Frac}}
-\newcommand{\F}{\mathscr{F}}
-%\newcommand{\id}{\mbox{id}}
-\DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\Hom}{Hom}
-\newcommand{\iso}{\xrightarrow{~\sim~}}
-\newcommand{\longiso}{\xrightarrow{\;\;\;~\sim\,\;\;\;}}
-\DeclareMathOperator{\htt}{ht}
-\newcommand{\leqs}{\leqslant}
-\newcommand{\geqs}{\geqslant}
-\renewcommand{\P}{\mathds{P}}
-\newcommand{\mb}[1]{{\rm {#1}}}
-\newcommand{\wtilde}[1]{\widetilde{#1}}
-
 
 \newtheorem*{lemma}{Lemma}
 
 \begin{document}
 
-{Math 6421} \hfill {11-20-2025}
+{Atiyah and Macdonald} \hfill {12-20-2025}
 
 \bigskip\bigskip
 
 \begin{center}
 
-{\sc hw12}
+{\sc Chapter 1}
 
 \end{center}
 
@@ -59,161 +40,91 @@
 \bigskip
 
 \begin{enumerate}
-	\item[10.13.] {
-      \begin{enumerate}
-        \item Show that
-          \[
-            \sum_{i=0}^nx_i\frac{\partial 
-            f}{\partial x_i}\\
-          \] 
-          for any homogeneous polynomial $f\in k[x_0,
-          \ldots, x_n]$ of degree d.
-        \item (Projective Jacobi criterion) Let
-          $X\subset \P^n$ be a projective variety
-          with homogeneous ideal $I(X) = \la f_1,
-          \ldots, f_r\ra$, and let $a\in X$.
-          Prove that $X$ is smooth at $a$ if and 
-          only if the rank of the $r\times (n+1)$
-          Jacobian matrix
-          $J(f):=\left(\frac{\partial f_i}{\partial x_j}(a)\right)_{ij}$ is at least $n-\codim_X\{a\}$.
-
-          In this criterion, note that the entries 
-          $\frac{\partial f_i}{\partial x_j}(a)$ of 
-          the Jacobian are not well-defined:
-          
-          Multiplying the coordinates of $a$ by a scalar $\lambda\in K^*$ will multiply $\frac{\partial f_i}{\partial x_j}(a)$ by $\lambda^{d_i-1}$, where $d_i$ is the degree of $f_i$.
-          However, these are just row transformations of the Jacobian matrix, which do not effect its rank.
-          Hence, the condition in the criterion is well-defined.
-      \end{enumerate}
+	\item[1.] {
     }
 \end{enumerate}
 
 \begin{proof}
-  (a) Let $f:\R^n\to \R$ a non-constant homegeneous polynomial of degree $d>0$.
-  Note that, for any monomial $g= (x^1)^{e_1}\cdots (x^n)^{e_n}$ of degree $d=\sum_{i=1}^n e_i$, we have
-  \begin{align*}
-    \sum_{i=1}^n x^i\frac{\partial g}{\partial x^i} &= \sum_{i=1}^nx^i \frac{e_ig}{x^i} = dg.
-  \end{align*}
-  Linearity of derivatives gives us the same identity if $g$ is a sum of monomials of degree $d$.
-  Hence, we have
-  \[
-    \sum_{i=1}^n x^i\frac{\partial f}{\partial x^i} = df
-  \] 
-  for the function $f$ described above.
-
-  (b) By a change of coordinates, we may choose $a=[1:0:\cdots :0]\in \PP^n$. 
-  Smoothness is entirely local, so $X$ is smooth at $a$ iff $X\cap U_0$ is smooth at $a$, iff $Y:=V_a(f_1^i,\ldots, f_r^i)$ is smooth at $0$.
-  By the affine Jacobi criterion, this occurs iff $\rk J(f^i)\geqslant n-\codim_{Y}\{0\}$.
-
-  Note that $\codim_Y\{0\}= \codim_{X\cap U_0}\{a\}$.
-  Let $X=X_1\cup\cdots \cup X_s$ be an irreducible decomposition of $X$.
-  Then $X\cap U_0 = (X_1\cap U_0)\cup\cdots \cup (X_s\cap U_0)$ is a closed cover of $X\cap U_0$. Set $X_i\cap U_0=\cup_{j=1}^{s_i}X_{ij}$ to be their individual irreducible decompositions.
-  Note that each $X_i\cap U_0\ni a$ is nonempty and open in $X_i$.
-  Then
-  \begin{align*}
-    \codim_{X\cap U_0}\{a\} &= \max_{\substack{1\leqs i\leqs s\\ 1\leqs j\leqs s_i}}\codim_{X_{ij}}\{a\} \\
-                            &= \max_{\substack{a\in X_i\\ 1\leqs j\leqs s_i}}\dim X_{ij} \\
-                            &= \max_{a\in X_i}\dim X_i\cap U_0 \\
-                            &= \max_{a\in X_i}\dim X_i \\
-                            &= \max_{1\leqs i\leqs n}\codim_{X_i}\{a\} \\
-                            &= \codim_X\{a\}.
-  \end{align*}
-  It suffices, then, to show that $\rk J(f^i)= \rk J(f)$.
-
-  Whenever $k\neq 0$, we have 
-  \begin{align*}
-    \frac{\partial f_j^i}{\partial x_k}(0) &= 
-    \frac{\partial f_j}{\partial x_k}(a),
-  \end{align*}
-  since we can set $x_0=1$ before or after differentiation with respect to $x_k$.
-  Adding the last $n$ rows to the first row of $J(f)$ gives us a matrix $J'(f)$ with $\rk J(f)= \rk J'(f)$, 
-  \[
-    J'(f)_{j k}= J(f)_{j k} = J(f^i)_{j k}
-  \] 
-  for $k\neq0$, and
-  \begin{align*}
-    J'(f)_{j 0} &= \sum_{i=0}^n\frac{\partial f_j}{\partial x_i}(a) \\
-                &= \sum_{i=0}^n \left(x_i \frac{\partial f_j}{x_i}\right)(a) \\
-                &= f(a)\\
-                &= 0.
-  \end{align*}
-  Then $\rk J(f^i) = \rk J'(f) = J(f)$, whence the result follows.
 \end{proof}
 
 \begin{enumerate}
-	\item[10.23.] {
-      Let $n\geqs 2$. Prove:
-      \begin{enumerate}
-        \item Every smooth hypersurface in $\PP^n$ is irreducible.
-        \item A general hypersurface in $\PP^n_\CC$ is smooth (and thus by (a) irreducible).
-          More precisely, for a given $d\in \NN_{>0}$, the vector space $\CC[x_0,\ldots, x_n]_d$ has dimension $\binom{n+d}{n}$,
-          and so the space of all homogeneous degree-d polynomials in $x_0,\ldots, x_n$ module scalars can be identified with the projective space $\PP_\CC^{\binom{n+d}{n}-1}$.
-          Show that the subset of this projective space of all (classes of) polynomials $f$ such that $f$ is irreducible and $V_p(f)$ is smooth, is dense and open.
-      \end{enumerate}
+	\item[2.] {
     }
 \end{enumerate}
 
 \begin{proof}
-  (a) Fix a hypersurface $X\subset \PP^n$.
-  By Remark 10.10(b), we have that each $a\in X$ is contained in a unique irreducible component of $X$.
-  Let $Y,Y'\subset X$ be two such irreducible components.
-  By our earlier characterization of projective hypersurfaces, $X$ is pure-dimension $n-1$.
-  Thus, 
-  \[
-    \dim Y +\dim Y' = 2(n-1) = 2n-2\geqslant n
-  \]
-  gives us $a\in Y\cap Y'$. 
-  However, $a$ is contained in a unique irreducible component of $X$, so $Y=Y'$, whence $X=Y$ is irreducible.
-
-  (b) Let $X=V(f)\subset \PP^n$ be a hypersurface.
-  If $X$ is irreducible, then $I(X)=\sqrt{(f)} = (f)$.
-  It follows from the projective Jacobi criterion that $a\in X$ is singular iff $\left(\frac{\partial f}{\partial x_i}\right)_{i}$ is of rank strictly less than $n-\codim_X\{a\}= 1$, i.e. 
-  \[
-    a\in V_X\left(\frac{\partial f}{\partial x_0},\ldots, \frac{\partial f}{\partial x_n}\right).
-  \]
-  Thus, an irreducible variety $X$ is smooth iff
-  \begin{align*}
-    V\left(f,\frac{\partial f}{\partial x_0},\ldots, \frac{\partial f}{\partial x_n}\right)=\0.
-  \end{align*}
-
-  Suppose instead that $X$ is not irreducible, i.e. $f=gh$ for homogeneous polynomials $g,h$.
-  Then we can write
-  \begin{align*}
-    V \left(f,\frac{\partial f}{\partial x_0},\ldots, \frac{\partial f}{\partial x_n}\right)
-    &= V\left(gh,g\frac{\partial h}{\partial x_0} + \frac{\partial g}{\partial x_0}h,\ldots, g\frac{\partial h}{\partial x_n}+ \frac{\partial g}{\partial x_n}h\right) 
-    \supset V(g)\cap V(h).
-  \end{align*}
-  We have that $\dim V(g)+\dim V(h) = 2n-2\geqslant n$, so $V(g)\cap V(h)\neq \0$, so the above set is nonempty whenever $X$ is not irreducible.
-  We conclude that $X$ is irreducible and smooth if and only if
-  \begin{align*}
-    V\left(f,\frac{\partial f}{\partial x_0},\ldots, \frac{\partial f}{\partial x_n}\right)=\0.
-  \end{align*}
-
-  Denote $\PP:= \PP^{\binom{n+d}d}$, and consider the incidence relation
-  \begin{align*}
-    \Gamma=\{([c_I], a):a\in V(\sum_Ic_Ix^I)\}\in \PP\times \PP^n
-  \end{align*}
-  from class. 
-  By our above analysis, the set of pairs $([c_I],a)\in \Gamma$ where either $a$ is a singular point of $V(\sum_Ic_Ix^I)$ or $V(\sum_Ic_Ix^I)$ is not reducible is given by
-  \begin{align*}
-    Z:= V\left(\sum_Ic_Ix^I,\sum_I c_I\frac{\partial x^I}{\partial x_0},\ldots, \sum_I c_I\frac{\partial x^I}{\partial x_n}\right)\subset \Gamma.
-  \end{align*}
-  Clearly the set of hypersurfaces in $\PP^n$ which are either not smooth or not irreducible is parametrized by $p(Z)\subset \PP$, where $p:\Gamma\to \PP$ is the projection. 
-  $\PP^n$ is complete, so $p$ is a closed map, whence $p(Z)$ is closed. 
-  The set of irreducible, smooth hypersurfaces is parametrized by the open set $\PP\setminus p(Z)$, which is nonempty by existence of the Fermat hypersurfaces.
-  Thus, $\PP\setminus p(Z)$ is dense and open in $\PP$, so that a generic hypersurface in $\PP^n$ is smooth and irreducible.
 \end{proof}
 
-% \begin{enumerate}
-%   \item[10.17.] {
-%       For $l\in \NN$ let $X_l$ be the complex affine curve $X_l:= V(x_2^2-x_1^{2l+1})\subset \A_\C^2$.
-%       Show that $X_l$ is not isomorphic to $X_l$ if $k\neq l$.
-%     }
-% \end{enumerate}
-% 
-% \begin{proof}
-% \end{proof}
+\begin{enumerate}
+	\item[3.] {
+    }
+\end{enumerate}
 
-Collaboration Statement: Me and Frank in the trenches$\ldots$ Didn't actually discuss out of office hours though lol.
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+	\item[4.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+	\item[5.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[15.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[16.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[17.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[18.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[19.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[20.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
 
 \end{document}
