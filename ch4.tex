@@ -1,0 +1,312 @@
+\documentclass[12pt]{amsart} 
+\usepackage{stackengine,scalerel}
+
+\input{./latex-preamble/cm-preamble.tex}
+
+%\graphicspath{ {./diagrams/} }
+
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+{Atiyah-MacDonald} \hfill {2-21-2026}
+
+\bigskip\bigskip
+
+\begin{center}
+
+{\sc Chapter 4}
+
+\end{center}
+
+\begin{center}
+
+  {Noah Parker} %\footnote{Collaborated with Kalev Martinson and Frank :).}}
+    
+\end{center}
+
+\bigskip
+
+\begin{enumerate}
+	\item[4.1.] {
+      If an ideal $\a$ has a primary decomposition, then $\Spec(A/\a)$ has only finitely many irreducible components.
+    }
+\end{enumerate}
+
+\begin{proof}
+  Write $\a = \bigcap_{i=1}^n \q_i$ for its primary decomposition, with $\q_i$ a $\p_i$-primary ideal for $i=1,\ldots, n$.
+  We have that
+  \begin{align*}
+    \Spec (A/\a) &\cong V(\a) 
+                 = \bigcup_{i=1}^n V(\q_i) 
+                 = \bigcup_{i=1}^n V(\p_i).
+  \end{align*}
+  Without loss of generality, take $m\leqs n$ such that each $\p_1,\ldots, \p_m$ is minimal.
+  Then, if $1\leqs i\leqs m$, $V(\p_i)\subset V(\p)\subset V(\a)$ implies $\p_i\supset \p\supset \a$, whence $\p_i\supset \p\supset \p_j$ for $1\leqs j\leqs m$.
+  Minimality of $\p_1,\ldots,\p_m$ gives us that $i=j$, so $\p = \p_i$, showing that $V(\p_i)$ is irreducible for all $1\leqs i\leqs m$.
+  We conclude that
+  \begin{align*}
+    V(\a) = \bigcup_{i=1}^m V(\p_i)
+  \end{align*}
+  is a finite irreducible decomposition of $\Spec (A/\a)$, as desired.
+\end{proof}
+
+\begin{enumerate}
+	\item[4.2.] {
+      If $\a=r(\a)$ is a decomposable ideal, then $\a$ has no embedded prime ideals.
+    }
+\end{enumerate}
+
+\begin{proof}
+  We can write 
+  \begin{align*}
+    \a &=r(\a)= \bigcap_{\p\supset \a}\p = \bigcap_{i\in I}\p_i,
+  \end{align*}
+  where $I$ is the (not necessarily finite) set of minimal elements in $\{\p\supset \a\}$.
+  However, $\a$ decomposable gives us that $I=\{1,\ldots, n\}$ is finite, and in fact $\{\p_i\}_{i=1}^n$ is the set of minimal ideals in the primary decomposition of $\a$ by Proposition 4.6.
+  We conclude that $\a= \bigcap_{i=1}^n\p_i$ is the intersection of its minimal ideals, whence it has no embedded ideals.
+\end{proof}
+
+\begin{enumerate}
+	\item[4.5.] {
+      In the polynomial ring $k[x,y,z]$ with $k$ a field, let $\p_1=(x,y)$, $\p_2=(x,z)$, $\m=(x,y,z)$; $\p_1$ and $\p_2$ are prime, and $\m$ is maximal.
+      Let $\a=\p_1\p_2$. 
+      Show that $\a=\p_1\cap\p_2\cap\m^2$ is a reduced primary decomposition of $\a$.
+      Which components are isolated and which are embedded?
+    }
+\end{enumerate}
+
+\begin{proof}
+  We have that $\a = (x^2,xz, yx,yz)\subset \p_1\cap\p_2\cap\m^2$.
+  All of the ideals are homogeneous, so it suffices to show the reverse inclusion for homogeneous elements.
+  $y^2\notin \p_2$ and $z^2\notin \p_1$, so any homogeneous degree 2 element of $\m^2$ is contained in $\a$, so that the reverse inclusion holds. %\footnote{I'm being sloppy, but this is boring.}
+
+  $\m$ maximal implies $\m^2$ is $\m$-primary, and clearly each $\p_i$ is $\p_i$-primary.
+  $\m^2$ contains no degree 1 elements, so $\p_1,\p_2\not\subset \m^2$.
+  Conversely, $z^2\in\m^2\setminus \p_1$ and $y^2\in \m^2\setminus \p_2$ shows that neither of the reverse inclusions hold.
+  Finally, $z\in \p_2\setminus \p_1$ and $y\in \p_1\setminus \p_2$ show that neither contains the other.
+  We conclude that our decomposition is reduced. 
+  Finally, $\p_1,\p_2\supset \m$ are minimal primes of $\a$ by above, while $\m$ is embedded.
+\end{proof}
+ 
+% \begin{enumerate}
+%  	\item[4.6.] {
+%       Let $X$ be an infinite compact Hausdorff space, $C(X)$ the ring of real valued functions on $X$.
+%       Is the zero ideal decomoposable in this ring?
+%     }
+% \end{enumerate}
+%  
+% \begin{proof}
+% \end{proof}
+
+% \begin{enumerate}
+%  	\item[4.7.] {
+%       Let $A$ be a ring. 
+%       For each $\a\lideal A$, let $\a[x]$ denote the set of polynomials in $A[X]$ with coefficients in $\a$.
+%       \begin{enumerate}
+%         \item $\a[x]$ is the extension of $\a$ to $A[x]$. 
+%         \item If $\p$ is a prime ideal in $A$, then $\p[x]$ is a prime ideal in $A[x]$.
+%         \item If $\q$ is a $\q$-primary ideal in $A$, then $\q[x]$ is a $\p[x]$-primary ideal in $A[x]$.
+%         \item If $\a=\bigcap_{i=1}^n\q_i$ is a minimal primary decomposition in $A$, then $\a[x]=\bigcap_{i=1}^n\q_i[x]$ is a minimal primary decomposition in $A[x]$.
+%         \item If $\p$ is a minimal prime ideal of $\a$, then $\p[x]$ is a minimal prime ideal of $\a[x]$.
+%       \end{enumerate}
+%     }
+% \end{enumerate}
+% 
+% \begin{proof}
+% \end{proof}
+
+\begin{enumerate}
+  \item[4.12.] {
+      Let $A$ be a ring, $S$ a multiplicatively closed subset of $A$.
+      For any ideal $\a\lideal A$, let $S(\a)$ denote the contraction of $S^{-1}\a$ in $A$.
+      $S(\a)$ is called the saturation of $\a$ with respect to $S$.
+      Prove that
+      \begin{enumerate}
+        \item $S(\a)\cap S(\b)=S(\a\cap \b)$ 
+        \item $S(r(\a))=r(S(\a))$ 
+        \item $S(\a)=(1)\iff$ $\a$ meets $S$
+        \item $S_1(S_2(\a))=(S_1S_2)(\a)$.
+      \end{enumerate}
+      If $\a$ has a primary decomposition, prove that the set of ideals $S(\a)$ (where $S$ runs over all multiplicatively closed subsets of $A$) is finite.
+    }
+\end{enumerate}
+
+\begin{proof}
+  (a) We have that
+  \begin{align*}
+    S(\a\cap \b) &= (S^{-1}(\a \cap \b))^c \\
+                 &= (S^{-1}\a \cap S^{-1}\b)^c \\
+                 &= (S^{-1}\a)^c\cap (S^{-1}\b)^c \\
+                 &= S(\a)\cap S(\b).
+  \end{align*}
+
+  (b) We have that
+  \begin{align*}
+    S(r(\a)) &= (S^{-1}r(\a))^c \\
+             &= (r(S^{-1}r(\a)))^c \\
+             &= r(S(\a)).
+  \end{align*}
+
+  (c) 
+  %Fix the natural inclusion $\phi:A\hookrightarrow S^{-1}A$. %Recall that $S(\a)= (S^{-1}\a)^c= \a^{ec}$.
+  %We have that
+  %\begin{align*}
+  %  S(\a) =(1) &\iff S^{-1}\a\supset \phi(A) \\
+  %             &\iff S^{_1}\a = \a^e \supset A^e= S^{-1}A \\
+  %             &\iff \a\text{ meets $S$}
+  %\end{align*}
+  %by 3.11ii.
+  By 3.11ii, we have that 
+  \begin{align*}
+    S(\a)=\a^{ec} = \bigcup_{s\in S}(\a: s),
+  \end{align*}
+  so $S(\a)=(1)$ iff $1\in (\a:s)$ for some $s\in S$, i.e. $\a$ meets $S$.
+
+  (d) We have 
+  \begin{align*}
+    S_1(S_2(\a)) &= \bigcup_{s_1\in S_1}(S_2(\a):s_1) \\
+                 &= \bigcup_{s_1\in S_1} (\bigcup_{s_2\in S_2}(\a:s_2):s_1) \\
+                 &= \bigcup_{s_1\in S_1}\{x\in A: xs_1\in \bigcup_{s_2\in S_2}(\a:s_2)\} \\
+                 &= \bigcup_{s_1\in S_1}\{x\in A:\exists s_2\in S_2~(xs_1s_2\in \a)\} \\
+                 &= \bigcup_{\substack{s_1\in S_1\\s_2\in S_2}} (\a:s_1s_2) \\
+                 %&=\bigcup_{s_1s_2\in S_1S_2}(\a:s_1s_2) \\
+                 &=(S_1S_2)(\a).
+  \end{align*}
+
+  Finally, suppose $\a$ has a primary decomposition $\a=\bigcup_{i=1}^n\q_i$, with each $\q_i$ a $\p_i$-primary ideal.
+  Fix a multiplicative subset $S\subset A$.
+  We have that
+  \begin{align*}
+    S(\a) &= S\left(\bigcap_{i=1}^n\q_i\right) \\
+          &= \bigcap_{i=1}^n S(\q_i),
+  \end{align*}
+  where
+  \[
+    S(\q_i) =
+    \begin{cases}
+      \q_i & S\cap\p_i = \0 \\
+      (1) & S\cap \p_i\neq \0
+    \end{cases}
+  \] 
+  implies that
+  \[
+    S(\a)= \bigcap_{i\in I}\q_i
+  \] 
+  for some $I\subset \{1,\ldots, n\}$, possibly empty.
+  There exist only finitely many $I$, concluding our proof.
+  % Note that
+  % \begin{align*}
+  %   r(S(\a)) &= S(r(\a)) = \bigcap_{i=1}^nS(\p_i).
+  % \end{align*}
+  % Then
+  % \begin{align*}
+  %   S(\a)\neq(1) &\iff \bigcap_{i=1}^nS(\p_i) \neq (1) \\
+  %             &\iff \exists ~i~ (S(\p_i)\neq (1)) \\
+  %             &\iff \exists ~i~(S\subset A\setminus \p_i).
+  % \end{align*}
+\end{proof}
+
+\begin{enumerate}
+  \item[4.13.] {
+      Let $A$ be a ring and $\p$ a prime ideal of $A$.
+      The \emph{nth symbolic power of $\p$} is defined to be the ideal (with the notation of Exercise 4.12)
+      \[
+        \p^{(n)}:=S_\p(\p^n),
+      \] 
+      where $S_\p=A-\p$.
+      Show that
+      \begin{enumerate}
+        \item $\p^{(n)}$ is a $\p$-primary ideal;
+        \item if $\p^n$ has a primary decomposition, then $\p^{(n)}$ is its $\p$-primary component;
+        \item $\p^{(n)}=\p^n\iff \p^n$ is $\p$-primary.
+      \end{enumerate}
+    }
+\end{enumerate}
+
+\begin{proof}
+  (a) We have that
+  \begin{align*}
+    r(\p^{(n)}) &= S_\p(r(\p^n)) = S_\p(\p) = \p.
+  \end{align*}
+
+  (b) Write a minimal primary decomposition $\p^n = \bigcap_{i=1}^n\q_i$.
+  Note that $\p=r(\p^n)=\bigcap_{i=1}^n\p_i$ implies $\p_i=\p$ for some $i$.
+  In fact, the above shows that $\p$ is the unique minimal ideal in $\p_1,\ldots, \p_n$, so that $\p_i\subset \p$ implies $\p=\p_i$.
+  %We take $\p_1=\p$ for simplicity.
+  Then, fixing $\p_1=\p$,
+  \[
+    \p^{(n)} = \bigcap_{i=1}^nS_\p(\q_i) =\bigcap_{\p_i\subset \p_1}\q_i =\q_1
+  \] 
+  gives us our result.
+
+  (c) If $\p^n$ is $\p$-primary, then it must equal its $\p$-primary component $\p^{(n)}$.
+  Conversely, $\p^{(n)}=\p^n$ implies $\p^n$ is primary, since the former is primary.
+\end{proof}
+
+\begin{enumerate}
+  \item[4.15.] {
+      Let $\a$ be a decomposable ideal in a ring $A$, $\Sigma$ an isolated set of prime ideals belonging to $\a$, and let $\q_\Sigma$ be the intersection of the corresponding primary elements.
+      Let $f\in A$ such that, for each $\p\supset \a$ we have $f\in \p\iff \p\notin \Sigma$, and define $S_f=\la f\ra$ to be the powers of $f$.
+      Show that $\q_\Sigma=S_f(\a)=(\a:f^n)$ for all large $n$.
+    }
+\end{enumerate}
+
+\begin{proof}
+  We have that $\Sigma\subset V(\a)$ is isolated iff $\Sigma = \bigcup_{\p\in \Sigma}V(\p)$.
+  Write a minimal primary decomposition $\a=\bigcup_{i=1}^r\q_i$, with each $\q_i$ a $\p_i$-primary ideal.
+  We have that $\p_i\cap S_f=\0\iff f\notin \p_i\iff \p\in \Sigma$, so that $\q_\Sigma =S_f(\a)$ follows from Proposition 4.9.
+  Note that
+  \begin{align*}
+    S_f(\a) &= \bigcap_{i=1}^r S_f(\q_i)
+            = \bigcap_{i=1}^r \bigcup_{n\geqs 1} (\q_i : f^n).
+  \end{align*}
+  $xf^n\in \q_i$ implies either $x\in \q_i$ or $f^{m_i}\in \q_i$ for some $m_i\geqs 1$.
+  If $f^{m_i}\in \q_i$, then 
+  \[
+    \bigcup_{n\geqs 1}(\q_i:f^n)= (\q_i:f^{m_i})=(1).
+  \]
+  Otherwise, $\bigcup_{n\geqs 1}(\q_i:f^n)= (\q:f^{m})=\q$ for any arbitrary $m\geqs 1$.
+  Then, for any $m\geqs\max\{m_i\}$, we have
+  \begin{align*}
+    S_f(\a) &= \bigcap_{i=1}^r(\q_i:f^m) = (\a:f^m).
+  \end{align*}
+\end{proof}
+
+\begin{enumerate}
+  \item[4.18.] {
+      Consider the following conditions on a ring $A$:
+      \begin{enumerate}
+        \item[(L1)] For every proper ideal $\a\lideal A$ and every $\p\in \Spec A$, there exists $x\notin \p$ such that $S_\p(\a)=(\a:x)$, where $S_\p=A-\setminus \p$.
+        \item[(L2)] Given an ideal $\a$ and a descending chain $S_1\supset S_2\supset\cdots$ of multiplicatively closed subsets of $A$, %the ascending chain $S_1(\a)\supset S_2(\a)\supset\cdots$ of ideals stabilizes. 
+          there exists an integer $n$ such that $S_n(\a)=S_{n+1}(\a)=\cdots$.
+      \end{enumerate}
+      Prove that the following are equivalent:
+      \begin{enumerate}
+        \item Every ideal in $A$ has a primary decomposition;
+        \item $A$ satisfies (L1) and (L2).
+      \end{enumerate}
+    }
+\end{enumerate}
+
+\begin{proof}
+  (a$\implies$b)
+\end{proof}
+% 
+% \begin{enumerate}
+%   \item[20.] {
+%     }
+% \end{enumerate}
+% 
+% \begin{proof}
+% \end{proof}
+% 
+% \begin{enumerate}
+%   \item[21.] {
+%     }
+% \end{enumerate}
+% 
+% \begin{proof}
+% \end{proof}
+
+\end{document}
