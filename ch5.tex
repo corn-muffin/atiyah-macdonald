@@ -1,0 +1,115 @@
+\documentclass[12pt]{amsart} 
+\usepackage{stackengine,scalerel}
+
+\input{./latex-preamble/cm-preamble.tex}
+
+%\graphicspath{ {./diagrams/} }
+
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+{Atiyah-MacDonald} \hfill {2-28-2026}
+
+\bigskip\bigskip
+
+\begin{center}
+
+{\sc Chapter 5}
+
+\end{center}
+
+\begin{center}
+
+  {Noah Parker} %\footnote{Collaborated with Kalev Martinson and Frank :).}}
+    
+\end{center}
+
+\bigskip
+
+\begin{enumerate}
+	\item[5.1.] {
+      Let $f:A\to B$ be an integral homomorphism of rings.
+      Show that $f^*:\Spec B\to \Spec A$ is a closed mapping. (This is a geometric equivalent of (5.10).)
+    }
+\end{enumerate}
+
+\begin{proof}
+  Take $\b\lideal B$, and recall that $f^*(V(\b))\subset \ol {f^*(V(\b))}= V(\b^c)$ by (Ex. 1.21iii).
+  Now, suppose $\p\in V(\b^c)$ is a prime ideal of $A$, i.e. $\p\supset \b^c=f^{-1}(\b)$.
+  Then in particular $\p\supset \ker f$, so $\p$ decends to a prime ideal $f(\p)$ of $A/\ker f\cong \im f\subset B$.
+
+  $\im f\subset B$ is integral, so (5.10) gives us a prime $\q\in \Spec B$ with $\q\cap \im f = f(\p)$.
+  We have that $\q\supset f(\p) \supset f(\b^c)$ implies $\q\supset \b^{ce}=\b$, i.e. $\q\in V(\b)$.
+  Further,
+  \begin{align*}
+    f^*(\q) &= f^{-1}(\q) \\
+            &= f^{-1}(\q\cap \im f) \\
+            &= f^{-1}(f(\p)) \\
+            &= \p,
+  \end{align*}
+  since $\p\supset \ker f$.
+  Thus, $\p\in f^*(V(\b))$, so in fact $f^*(V(\b))=\ol {f^*(V(\b))}$ is closed.
+\end{proof}
+
+\begin{enumerate}
+	\item[5.2.] {
+      Let $B$ be integral over $A\subset B$, and let $f:A\to \Omega$ be a homomorphism of $A$ into an algebraically closed field $\Omega$.
+      Show that $f$ can be extended to a homomorphism of $B$ into $\Omega$.
+    }
+\end{enumerate}
+
+\begin{proof}
+  $f:A\to \Omega$ corresponds to a maximal ideal $\p=\ker f\lideal A$ and an inclusion $\ol f:A/\p\hookrightarrow \Omega$.
+  (5.10) supplies us with a prime ideal $\q\lideal B$ such that $\q\cap A= \p$, which is in fact maximal by (5.8).
+  Then $\pi:B\to B/\q$ restricts to a map 
+  \[
+    \pi|_A:A\to \frac{A}{\q\cap A}=\frac{A}\p\subset \frac{B}\q.
+  \] 
+  (5.6) gives us that $K:=B/\q$ is integral over $k:=A/\p$.
+
+  Let $(k,\ol f)\leqs (C,\ol g)$ be a maximal element of $\Sigma$.
+  In particular, it is a valuation ring of $K$, so $K\supset C\supset \ol k=K$ by (5.22), whence $K=C$.
+  Then $g:=\ol g\circ \pi:B\to \Omega$ has 
+  \[
+    g|_A=\ol g|_k\circ \pi|_A= \ol f\circ \pi|_A=f.
+  \]
+\end{proof}
+
+\begin{enumerate}
+	\item[5.10.] {
+      A ring homomorphism $f:A\to B$ is said to have the \emph{going-up property} (resp. the \emph{going-down property}) if the conclusion of the going-up theorem (resp. going-down theorem) holds for $B$ and its subring $f(A)$.
+      Let $f^*:\Spec B\to \Spec A$ be the mapping associated with $f$.
+      \begin{enumerate}
+        \item Consider the following three statements:
+          \begin{enumerate}
+            \item $f^*$ is a closed mapping.
+            \item $f$ has the going-up property.
+            \item For any prime ideal $\q$ of $B$, let $\p=\q^c$.
+              Then $f^*:\Spec(B/\q)\to \Spec (A/\p)$ is surjective.
+          \end{enumerate}
+          Prove that $(i)\implies (ii)\iff (iii)$.
+        \item Consider the following three statements:
+          \begin{enumerate}
+            \item $f^*$ is an open mapping.
+            \item $f$ has the going-down property.
+            \item For any prime ideal $\q$ of $B$, let $\p=\q^c$.
+              Then $f^*:\Spec(B_\q)\to \Spec (A_\p)$ is surjective.
+          \end{enumerate}
+          Prove that $(i)\implies (ii)\iff (iii)$.
+      \end{enumerate}
+    }
+\end{enumerate}
+
+\begin{enumerate}
+	\item[5.16.] {
+      Let $k$ be a field and let $A\neq 0$ be a finitely generated $k$-algebra.
+      Then there exist elements $y_1,\ldots y_r\in A$ which are algebraically independent over $k$ and such that $A$ is integral over $k[y_1,\ldots, y_r]$.
+
+      We shall assume that $k$ is \emph{infinite}. (A different proof is required for the finite case.)
+      From the proof, it follows that $y_1,\ldots, y_r$ may be chosen to be linear combinations of $x_1,\ldots, x_n$.
+      This has the following geometrical interpretation: if $k$ is algebraically closed and $X$ is an affine algbraic variety in $k^n$ with coordinate ring $A\neq 0$, then there exists a linear subspace of dimension $r$ in $k^n$ and a linear mapping of $k^n$ onto $L$ which maps $X$ onto $L$. [Use Exercise (2).]
+    }
+\end{enumerate}
+
+\end{document}

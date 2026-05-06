@@ -277,7 +277,7 @@
   \item[4.18.] {
       Consider the following conditions on a ring $A$:
       \begin{enumerate}
-        \item[(L1)] For every proper ideal $\a\lideal A$ and every $\p\in \Spec A$, there exists $x\notin \p$ such that $S_\p(\a)=(\a:x)$, where $S_\p=A-\setminus \p$.
+        \item[(L1)] For every proper ideal $\a\lideal A$ and every $\p\in \Spec A$, there exists $x\notin \p$ such that $S_\p(\a)=(\a:x)$, where $S_\p=A\setminus \p$.
         \item[(L2)] Given an ideal $\a$ and a descending chain $S_1\supset S_2\supset\cdots$ of multiplicatively closed subsets of $A$, %the ascending chain $S_1(\a)\supset S_2(\a)\supset\cdots$ of ideals stabilizes. 
           there exists an integer $n$ such that $S_n(\a)=S_{n+1}(\a)=\cdots$.
       \end{enumerate}
@@ -290,7 +290,16 @@
 \end{enumerate}
 
 \begin{proof}
-  (a$\implies$b)
+  (a$\implies$b) We first prove (L1).
+  Let $\a\lideal A$ and take $\p\in \Spec A$.
+  If $\a\not\subset \p$, then we can take $x\in \a\setminus \p$ so that $S_\p(\a)=(1)=(\a:x)$.
+
+  Now, suppose we have $\a\subset \p$, and consider the isolated set of prime ideals 
+  \[
+    \Sigma=V(\p)\subset V(\a)
+  \]
+  over $\a$. 
+
 \end{proof}
 % 
 % \begin{enumerate}

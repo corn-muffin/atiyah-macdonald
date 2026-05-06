@@ -1,0 +1,61 @@
+\documentclass[12pt]{amsart} 
+\usepackage{stackengine,scalerel}
+
+\input{./latex-preamble/cm-preamble.tex}
+
+%\graphicspath{ {./diagrams/} }
+
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+{Atiyah-MacDonald} \hfill {4-10-2026}
+
+\bigskip\bigskip
+
+\begin{center}
+
+{\sc Chapter 6}
+
+\end{center}
+
+\begin{center}
+
+  {Noah Parker} %\footnote{Collaborated with Kalev Martinson and Frank :).}}
+    
+\end{center}
+
+\bigskip
+
+\begin{enumerate}
+	\item[6.1.] {
+      \begin{enumerate}
+        \item Let $M$ be a Noetherian $A$-module and $u:M\to M$ a module homomorphism.
+          If $u$ is surjective, then it is an isomorphism.
+        \item If $M$ is Artinian and $u$ is injective, then again $u$ is an isomorphism.
+      \end{enumerate}
+    }
+\end{enumerate}
+
+\begin{proof}
+  (a) Consider the filtration $\ker u\subset \ker u^2\subset\cdots$.
+  $M$ Noetherian gives us $n\geqs 1$ such that $\ker u^n = \ker u^{n+r}$ for all $r\geqs 0$.
+  Then
+\end{proof}
+
+\begin{enumerate}
+	\item[6.4.] {
+      Let $M$ be a Noetherian $A$-module, and let $\a$ be the annihilator of $M$ in $A$.
+      Prove that $A/\a$ is a Noetherian ring.
+
+      If we replace \emph{Noetherian} by \emph{Artinian}, is this result still true?
+    }
+\end{enumerate}
+
+\begin{enumerate}
+	\item[6.11.] {
+      Let $f:A\to B$ be a ring homomorphism and suppose that $f^*:\Spec B\to \Spec A$ is a closed mapping if and only if $f$ has the going up property (5, Ex. 10).
+    }
+\end{enumerate}
+
+\end{document}
