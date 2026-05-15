@@ -68,12 +68,77 @@
   \] 
   (5.6) gives us that $K:=B/\q$ is integral over $k:=A/\p$.
 
-  Let $(k,\ol f)\leqs (C,\ol g)$ be a maximal element of $\Sigma$.
+  Let $(k,\ol f)\leqs (C,\ol g)$ be a maximal element of the poset $\Sigma$ of maps from subrings of $K$ to $\Sigma$, ordered by restriction.
   In particular, it is a valuation ring of $K$, so $K\supset C\supset \ol k=K$ by (5.22), whence $K=C$.
   Then $g:=\ol g\circ \pi:B\to \Omega$ has 
   \[
     g|_A=\ol g|_k\circ \pi|_A= \ol f\circ \pi|_A=f.
   \]
+\end{proof}
+
+\begin{enumerate}
+	\item[5.3.] {
+      Let $f:B\to B'$ be a morphism of $A$-algebras, and let $C$ be an $A$-algbera.
+      If $f$ is integral, prove that $f\otimes 1:B\otimes_A C\to B'\otimes C$ is integral.
+    }
+\end{enumerate}
+
+\begin{proof}
+  We have that $B'$ is integral over $f(B)\leqs B'$.
+  That is, $f(B)[b_1',\ldots, b_n']$ is finitely generated for all $b_1',\ldots, b_n'\in B$.
+  Note as well that $(f\otimes 1)(B\otimes C)\cong f(B)\otimes C$.
+  Then, for arbitrary $\sum_{i=1}^n b_i'\otimes c_i\in B'\otimes_A C$,
+  \begin{align*}
+    (f\otimes 1)(B\otimes_A C)[\sum b_i'\otimes c_i]
+    %(f\otimes 1)(B\otimes_A C)[b_1'\otimes c_1+\cdots+ b_n'\otimes c_n]
+    &\leqs f(B)[b_1',\ldots, b_n']\otimes_A C[c_1,\ldots, c_n].
+  \end{align*}
+  The inclusions
+  \begin{align*}
+    f(B)\otimes_A C\inj f(B)[b_1',\ldots, b_n'] \otimes_A C\inj f(B)[b_1',\ldots, b_n']\otimes_A C[c_1,\ldots, c_n]
+  \end{align*}
+  are finite by closure of finiteness under base extension (2.17), so the composition is finite by closure of finiteness under composition (2.16).
+  Then our arbitrary element of $B'\otimes_A C$ is integral over $f(B)\otimes_A C$ by (5.1iii), so that $f\otimes 1$ is integral.
+\end{proof}
+
+\begin{enumerate}
+  \item[5.4] {
+      Let $A\subset B$ be a subring such that $B$ integral over $A$.
+      Let $\n$ be a maximal ideal of $B$ and let $\m=\n\cap A$ be the corresponding maximal ideal of $A$.
+      Is $B_\n$ necessarily integral over $A_\m$?
+    }
+\end{enumerate}
+
+\begin{proof}
+  We will show that this need not hold in general.
+  Consider $A:=k[x^2-1]\subset k[x]=$.
+  Clearly $k[x]$ is integral over $A$, as it is a finitely generated $A$ module.
+  Consider the maximal ideal $\n=(x-1)$.
+  We have that $\n\supset (x^2-1)$ and $\m:=(x^2-1)^c$ is maximal in $A$, so $\n\cap A\supset \m$ with $\n$ a proper ideal implies $\n\cap A=\m$.
+
+  Now, suppose that $1/(x+1)\in k[x]_{(x-1)}$ is integral over $A_\m$.
+  %Then we have $n\geqs0$ and $a_0,\ldots,a_n\in A_\m$ such that $(x+1)^{-n-1}=a_n(x+1)^{-n}+\cdots+a_0$.
+  % multiplying by $(x^2-1)^{n+1}$, we get
+  % \begin{align*}
+  %   (x-1)^{n+1} = a_n(x^2-1)(x-1)^n+a_{n-1} (x^2-1)^2(x-1)^n
+  % \end{align*}
+  Then $A_\m[1/(x+1)]$ is a finitely generated $A_\m$ module, %todo: find the contradiction.
+\end{proof}
+
+\begin{enumerate}
+  \item[5.7] {
+      Let $A$ be a subring of $B$ such that $B- A$ is closed under multiplication. 
+      Show that $A$ is integrally closed in $B$.
+    }
+\end{enumerate}
+
+\begin{proof}
+  Suppose that $b\in B-A$ is integral over $A$, so that $b^{n+1}=a_nb^n+\cdots +a_0$ for $a_i\in A$ and minimal $n\geqs 0$.
+  In fact, we may assume $n>0$, as otherwise $b\in A$.
+  Then $b^{n+1}\in B-A$ by closure under multiplication, and $a_0\in A$, so $b^{n+1}-a_0=a_nb^n+\cdots +a_1b\in B-A$.
+  Suppose that 
+
+  If $a_n\in A^\times$, then $b^{n-1}+a_n^{-1}a_{n-1}b^{n-1}\cdots +a_n^{-1}a_1$
 \end{proof}
 
 \begin{enumerate}
@@ -101,6 +166,11 @@
     }
 \end{enumerate}
 
+\begin{proof}
+  (a) We begin by showing that (i)$\implies$(ii).
+
+\end{proof}
+
 \begin{enumerate}
 	\item[5.16.] {
       Let $k$ be a field and let $A\neq 0$ be a finitely generated $k$-algebra.
@@ -111,5 +181,112 @@
       This has the following geometrical interpretation: if $k$ is algebraically closed and $X$ is an affine algbraic variety in $k^n$ with coordinate ring $A\neq 0$, then there exists a linear subspace of dimension $r$ in $k^n$ and a linear mapping of $k^n$ onto $L$ which maps $X$ onto $L$. [Use Exercise (2).]
     }
 \end{enumerate}
+
+\begin{enumerate}
+  \item[5.27] {
+      Let $A$,$B$ be two local rings.
+      $B$ is said to \emph{dominate} $A$ if $A$ is a subring of $B$ and the maximal ideal $\m$ of $A$ is contained in the maximal ideal $\n$ of $B$ (or, equivalently, if $m=\n\cap A$).
+
+      Let $K$ be a field and let $\Sigma$ be the set of all local subrings of $K$.
+      If $\Sigma$ is ordered by the relation of domination, show that $\Sigma$ has maximal elements, and that $A\in \Sigma$ is maximal if and only if $A$ is a valuation ring of $K$.
+    }
+\end{enumerate}
+
+\begin{proof}
+  Consider the poset
+  \begin{align*}
+    \Sigma'= \{(A,f)\mid A\leqs K, \; f:A\to \ol K\}
+  \end{align*}
+  ordered by restriction.
+  Clearly $\Sigma\subset \Sigma'$ as sets by identifying $A\leqs K$ with $(A,\,A\inj K\inj \ol K)$.
+  It is clear that $A\leqs_\Sigma B$ implies $(A,\,i:A\inj \ol K)\leqs_{\Sigma'} (B,\,j:B\inj \ol K)$.
+  Conversely, suppose $(A,\,i)\leqs_{\Sigma'} (B,\,j)$.
+  Then $A$ is a subring of $A'$, and 
+  \begin{align*}
+    \m = \ker i = \ker j|_A = \ker j\cap A = \n\cap A
+  \end{align*}
+  by (5.19), so that $A\leqs_\Sigma B$.
+  Thus, their poset structures coincide.
+
+  Suppose that $A\in \Sigma$ is maximal.
+  If $(A,i)\leqs_{\Sigma'} (B,g)$, then
+\end{proof}
+
+\begin{enumerate}
+  \item[5.28] {
+      Let $A$ be an integral domain, $K$ its field of fractions.
+      Show that the following are equivalent:
+      \begin{enumerate}
+        \item $A$ is a valuation ring of $K$;
+        \item If $\a$, $\b$ are any two ideals of $A$, then either $\a\subset \b$ or $\b\subset \a$.
+      \end{enumerate}
+      Deduce that if $A$ is a valuation ring and $\p$ is a prime ideal of $A$, then $A_\p$ and $A/\p$ are valuation rings of their fields of fractions.
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[5.29] {
+      Let $A$ be a valuation ring of a field $K$.
+      Show that every subring of $K$ which contains $A$ is a local ring of $A$.
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[5.30] {
+      Let $A$ be a valuation ring of a field $K$.
+      The group $A^\times$ of units of $A$ is a subgroup of the multiplicative group $K^\times$ of $K$.
+
+      Let $\Gamma = K^\times/A^\times$.
+      If $\xi,\eta\in \Gamma$ are represented by $x,y\in K$, define $\xi\geqs \eta$ to mean $xy^{-1}\in A$.
+      Show that this defines a total ordering on $\Gamma$ which is compatible with the group structure (i.e., $\xi\geqs \eta\implies \xi\omega\geqs \eta\omega$ for all $\omega\in \Gamma$).
+      In other words, $\Gamma$ is a totally ordered abelian group.
+      It is called the \emph{value group of $A$}.
+
+      Let $\upsilon:K^\times\to \Gamma$ be the canonical homomorphism.
+      Show that $\upsilon(x+y)\geqs \min(\upsilon(x), \epsilon(y))$ for all $x,y\in K^\times$.
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[5.31] {
+      Conversely, let $\Gamma$ be a totally ordered abelian group (written \emph{additively}), and let $K$ be a field.
+      A \emph{valuation of $K$ with values in $\Gamma$} is a mapping $\upsilon:K^\times \to \Gamma$ such that
+      \begin{enumerate}
+        \item $\upsilon(xy)= \upsilon(x)+\upsilon(y)$,
+        \item $\upsilon(x+y)\geqs \min(\upsilon(x),\upsilon(y))$,
+      \end{enumerate}
+      for all $x,y\in K^\times$.
+      Show that the set of elements $x\in K$ such that $x=0$ or $\upsilon(x)\geqs 0$ is a valuation ring of $K$.
+      This ring is called the valuation ring of $\upsilon$, and the subgroup $\upsilon(K^\times)$ is the \emph{value group} of $\upsilon$.
+
+      Thus, the concepts of valuation ring and valuation are essentially equivalent.
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[5.35] {
+      From (Ex. 5.1) and (Ex. 5.3), it follows that, if $f:A\to B$ is integral and $C$ is any $A$-algebra, then the mapping $(f\otimes 1)^*:\Spec(B\otimes_A C)\to \Spec C$ is a closed map.
+
+      Conversely, suppose that $f:A\to B$ has this property and that $B$ is an integral domain.
+      Then $f$ is integral.
+
+      Show that the result just proved remains valid if $B$ is a ring with only finitely many minimal prime ideals (e.g., if $B$ is Noetherian).
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
 
 \end{document}
