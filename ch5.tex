@@ -117,12 +117,23 @@
   We have that $\n\supset (x^2-1)$ and $\m:=(x^2-1)^c$ is maximal in $A$, so $\n\cap A\supset \m$ with $\n$ a proper ideal implies $\n\cap A=\m$.
 
   Now, suppose that $1/(x+1)\in k[x]_{(x-1)}$ is integral over $A_\m$.
-  %Then we have $n\geqs0$ and $a_0,\ldots,a_n\in A_\m$ such that $(x+1)^{-n-1}=a_n(x+1)^{-n}+\cdots+a_0$.
-  % multiplying by $(x^2-1)^{n+1}$, we get
-  % \begin{align*}
-  %   (x-1)^{n+1} = a_n(x^2-1)(x-1)^n+a_{n-1} (x^2-1)^2(x-1)^n
-  % \end{align*}
-  Then $A_\m[1/(x+1)]$ is a finitely generated $A_\m$ module, %todo: find the contradiction.
+  Then we have $n\geqs0$ and $a_0,\ldots,a_n\in A_\m$ such that $(x+1)^{-n-1}=a_n(x+1)^{-n}+\cdots+a_0$.
+  Multiplying by $(x+1)^{n+1}$, we get
+  \begin{align*}
+    1 = a_n (x+1) +\cdots + a_0 (x+1)^{n+1}\in (x+1)k[x]_{(x+1)},
+  \end{align*}
+  since $(x+1)\cap k[x^2-1]=(x^2-1)$ by the same argument as above.
+
+  Note that $(x+1)$ is exactly the kernel of the evaluation map $f:k[x]\to k:x\mapsto -1$.
+  Then $k[x]_{(x+1)}=k[x]_S$ where $S= k[x]-\ker f$, so that $f(S)\subset k^\times$ gives us $k_{f(S)}\cong k$.
+  Hence, we receive a map of localizations
+  \[
+    \begin{tikzcd}
+      k[x]_{(x+1)}\ar[r,twoheadrightarrow,"f"] & k,
+    \end{tikzcd}
+  \] 
+  under which $1\mapsto 1$ and $a_n(x+1)+\cdots+a_0(x+1)^{n+1}\mapsto 0$.
+  $1\neq 0$ in $k$, so this contradicts our assumption.
 \end{proof}
 
 \begin{enumerate}
@@ -133,12 +144,14 @@
 \end{enumerate}
 
 \begin{proof}
-  Suppose that $b\in B-A$ is integral over $A$, so that $b^{n+1}=a_nb^n+\cdots +a_0$ for $a_i\in A$ and minimal $n\geqs 0$.
+  Suppose that $b\in B-A$ is integral over $A$, so that $a_0=a_1b+\cdots +a_nb^n+b^{n+1}$ for $a_i\in A$ and minimal $n\geqs 0$.
   In fact, we may assume $n>0$, as otherwise $b\in A$.
-  Then $b^{n+1}\in B-A$ by closure under multiplication, and $a_0\in A$, so $b^{n+1}-a_0=a_nb^n+\cdots +a_1b\in B-A$.
-  Suppose that 
-
-  If $a_n\in A^\times$, then $b^{n-1}+a_n^{-1}a_{n-1}b^{n-1}\cdots +a_n^{-1}a_1$
+  We have
+  \begin{align*}
+    a_0 = b(a_1+\cdots + a_nb^{n-1}+b^n) \in A
+  \end{align*}
+  implies $a_1+\cdots + a_nb^{n-1}+b^n=a\in A$, as otherwise $a_0\in B-A$ by closure.
+  Then $a-a_1= a_2b+\cdots +a_nb^{n-1}+b^n$ is of strictly lower degree, contradicting minimality of $n$.
 \end{proof}
 
 \begin{enumerate}
