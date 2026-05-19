@@ -9,7 +9,7 @@
 
 \begin{document}
 
-{Atiyah-MacDonald} \hfill {2-28-2026}
+{Atiyah-MacDonald} \hfill {5-18-2026}
 
 \bigskip\bigskip
 
@@ -168,20 +168,120 @@
           \end{enumerate}
           Prove that $(i)\implies (ii)\iff (iii)$.
         \item Consider the following three statements:
-          \begin{enumerate}
+          \begin{enumerate}[label=(\roman*')]
             \item $f^*$ is an open mapping.
             \item $f$ has the going-down property.
             \item For any prime ideal $\q$ of $B$, let $\p=\q^c$.
               Then $f^*:\Spec(B_\q)\to \Spec (A_\p)$ is surjective.
           \end{enumerate}
-          Prove that $(i)\implies (ii)\iff (iii)$.
+          Prove that (i')$\implies$(ii')$\iff $(iii').
       \end{enumerate}
     }
 \end{enumerate}
 
 \begin{proof}
-  (a) We begin by showing that (i)$\implies$(ii).
+  (a) We begin by showing that (ii)$\iff$(iii).
+  As in the proof of the going-up theorem, it suffices to consider the case of $\p\subset \p'\lideal A$ and $\q\lideal B$ with $\q^c= \p$.
+  Applying $\Spec$ to the following diagram, 
+  \[
+    \begin{tikzcd}
+      B\ar[d, twoheadrightarrow]&A\ar[l,"f"']\ar[d, twoheadrightarrow] \\
+      B/\q & A/\p\ar[l,"\ol{\mb{$f$}}"']
+    \end{tikzcd}
+  \] 
+  we receive
+  \[
+    \begin{tikzcd}
+      \Spec B\ar[r,"f^*"] &\Spec A \\
+      \Spec (B/\q)\ar[r,"f^*"]\ar[u,hookrightarrow] &\Spec (A/\p).\ar[u,hookrightarrow]
+    \end{tikzcd}
+  \] 
+  Using (1.21iii,iv) and $f^*(\q)=\p$, we can restrict to 
+  \[
+    \begin{tikzcd}
+      V(\q)\ar[r,"f^*"] &V(\p) \\
+      \Spec (B/\q)\ar[r,"f^*"]\ar[u,"\sim"{anchor=south, rotate=90}] &\Spec (A/\p).\ar[u,"\sim"{anchor=south, rotate=90}]
+    \end{tikzcd}
+  \] 
+  Then there exists $\q'\supset \q$ with $f^{-1}(\q')=\p'$ if and only if $\ol\p'\in \im f^*$.
+  Hence, surjectivity of $f^*:\Spec(B/\q)\to \Spec(A/\p)$ holds for all prime ideals $\q\lideal B$ if and only if $f:A\to B$ possesses the going-up property.
 
+
+  Now, we will show that (i)$\implies$(iii).
+  Suppose $f^*$ is a closed mapping, and recall the last diagram from above.
+  By (1.21iii) once more, we have that 
+  \begin{align*}
+    f^*(V(\q))&= \ol{f^*(V(\q))} \\
+              &= V(\q^c) \\
+              &= V(\p),
+  \end{align*}
+  giving surjectivity of $f^*:\Spec(B/\q)\to \Spec(A/\p)$.
+
+  (b) We begin by showing that (ii')$\iff$(iii').
+  Once again, we need only consider the case of prime ideals $\p'\subset \p\lideal A$ with $\q\lideal B$ such that $\q^c=\p$.
+  Fixing $\q$ and $\p=\q^c$, (3.11iv) gives us the diagram
+  \[
+    \begin{tikzcd}
+      \{\q'\subset \q\}\ar[r,"f^*"] &\{\p'\subset \q\} \\
+      \Spec B_\q\ar[r,"f^*"]\ar[u,"\sim"{anchor=south,rotate=90}]& \Spec A_\p\ar[u,"\sim"{anchor=south,rotate=90}],
+    \end{tikzcd}
+  \] 
+  whence we conclude our result similarly.
+
+  % Now, we prove (i')$\implies$(iii').
+  % Fix $\q\lideal B$, $\q^c=\p\lideal A$, so (Ex. 3.21ii) gives us the following diagram
+  % \[
+  %   \begin{tikzcd}
+  %     X \ar[r,"f^*"] & Y \\
+  %     \Spec B_\q\ar[u,hookrightarrow] \ar[r,"f^*"] & \Spec A_\p\ar[u,hookrightarrow].
+  %   \end{tikzcd}
+  % \] 
+  % Let $X:=\Spec B$ and $Y:= \Spec A$.
+  % (Ex. 3.22) gives us
+  % \begin{align*}
+  %   \im (\Spec B_\q\inj X)
+  %   &= \bigcap_{b'\in B\setminus \q}X_{b'},\\
+  %   \im (\Spec A_\p \inj Y)
+  %   &= \bigcap_{a'\in A\setminus \p}Y_{a'}.
+  % \end{align*}
+  % Fix $\p'\subset \p$, and let $a\in A\setminus \p\subset A\setminus \p'$, so that $f(a)=b\in B\setminus \q$, and the above diagram restricts to
+  % \[
+  %   \begin{tikzcd}
+  %     X_b \ar[r,"f^*"] & Y_a \\
+  %     \Spec B_\q\ar[u,hookrightarrow] \ar[r,"f^*"] & \Spec A_\p\ar[u,hookrightarrow].
+  %   \end{tikzcd}
+  % \] 
+  % % Recall that $f^*(X_b)\subset X_a$ is open, and
+  % % \begin{align*}
+  % %   f^*(X_b) 
+  % %   &= f^*(X\setminus V((b))) \\
+  % %   &\subset f^*(X)\setminus f^*(V((b))),
+  % % \end{align*}
+  % We have $\q'\in $
+
+  Finally, we show that (i')$\implies$(ii').
+  Suppose $f^*:\Spec B\to \Spec A$ is openFix $\p'\subset\p\lideal A$, and $\q\lideal B$ lying over $\p$, i.e. with $\q^c=\p$.
+  For any $b\in B\setminus \q$, $f^*(X_b)\ni \p$ is open, so $\p'\rightsquigarrow\p$ implies $\p'\in f^*(X_b)$.
+  This supplies us with $\q_b'\in X_b$ such that $f^*(\q_b')=\p'$, whence we receive
+  \begin{align*}
+    \q'&:=\bigcap_{b\in B\setminus\q}\q_b'\subset\q
+  \end{align*}
+  such that
+  \begin{align*}
+    f^*(\q') &= \bigcap_{b\in B\setminus \q}f^*(\q_b') = \p',
+  \end{align*}
+  as desired.
+\end{proof}
+
+\begin{enumerate}
+  \item[5.11] {
+      Let $f:A\to B$ be a flat homomorphism of rings.
+      Then $f$ has the going down property.
+    }
+\end{enumerate}
+
+\begin{proof}
+  This is a corollary of (Ex. 3.18).
 \end{proof}
 
 \begin{enumerate}
@@ -212,17 +312,17 @@
   \end{align*}
   ordered by restriction.
   Clearly $\Sigma\subset \Sigma'$ as sets by identifying $A\leqs K$ with $(A,\,A\inj K\inj \ol K)$.
-  It is clear that $A\leqs_\Sigma B$ implies $(A,\,i:A\inj \ol K)\leqs_{\Sigma'} (B,\,j:B\inj \ol K)$.
-  Conversely, suppose $(A,\,i)\leqs_{\Sigma'} (B,\,j)$.
+  %It is clear that $A\leqs_\Sigma B$ implies $(A,\,i:A\inj \ol K)\leqs_{\Sigma'} (B,\,j:B\inj \ol K)$.
+  Suppose $(A,\,i)\leqs_{\Sigma'} (B,\,j)$.
   Then $A$ is a subring of $A'$, and 
   \begin{align*}
     \m = \ker i = \ker j|_A = \ker j\cap A = \n\cap A
   \end{align*}
   by (5.19), so that $A\leqs_\Sigma B$.
-  Thus, their poset structures coincide.
+  %Thus, their poset structures coincide.
 
   Suppose that $A\in \Sigma$ is maximal.
-  If $(A,i)\leqs_{\Sigma'} (B,g)$, then
+  If $(A,i)\leqs_{\Sigma'} (B,g)$, then 
 \end{proof}
 
 \begin{enumerate}
@@ -238,16 +338,38 @@
 \end{enumerate}
 
 \begin{proof}
+  % ((a)$\implies$(b)) 
+  % Let $\a,\b\lideal A$.
+  % If $\a=(x)$ and $\b=(y)$ are cyclic, then $x/y\in A$ or $y/x\in A$ gives us our result.
+  % Suppose now that $\a=(x_1,\ldots, x_r)$ and $\b=(y_1,\ldots, x_s)$ are finitely generated, with $r,s$ minimal.
+  % For each $i,j$, either $(x_i)\subset (y_j)$ or $(y_j)\subset (x_i)$.
+  % If $(y_j)\subset (x_i)\subset (y_{j'})$, then $\b=(y_1,\ldots, \widehat{y}_j,\ldots, y_s)$ contradicts minimality of $s$, and similarly if $(x_i)\subset (y_j)\subset (x_{i'})$.
+  % Thus, either $(x_i)\subset (y_j)$ for all $i,j$,or $(y_j)\subset (x_i)$ for all $i,j$, whence $\a\subset \b$ or $\b\subset \a$.
+  ((a)$\implies$(b)) Let $\a,\b\lideal A$, and suppose without loss of generality that $\a\not\subset\b$.
+  Then fix $f\in \a\setminus \b$ and let $0\neq g\in \b$.
+  $f/g\notin A$, so $A$ a valuation ring gives $g/f\in A$, whence $g\in \a$, so that $\b\subset \a$.
+
+  ((b)$\implies$(a)) Let $x/y\in K$, and consider $(x),(y)\lideal A$.
+  If $(x)\subset (y)$, then $x\in (y)$ implies $x/y\in A$.
+  If $(y)\subset (x)$, then $y\in (x)$ implies $y/x\in A$.
+
+  Now, suppose $A$ is a valuation ring and $\p\lideal A$ is a prime ideal.
+  Any $\a,\b\lideal A_\p$ are extended, and $\a^c\subset \b^c$ or $\a^c\supset\b^c$ by the above, whence $\a\subset \b$ or $\a\supset \b$.
+  The ideal lattice of $A/\p$ is isomorphic to the poset $\{\a\supset \p\}$, so it is clear that the second criterion holds.
 \end{proof}
 
 \begin{enumerate}
   \item[5.29] {
       Let $A$ be a valuation ring of a field $K$.
-      Show that every subring of $K$ which contains $A$ is a local ring of $A$.
+      Show that every subring of $K$ which contains $A$ is a localization of $A$.
     }
 \end{enumerate}
 
 \begin{proof}
+  Let $B$ be a subring of $K$ containing $A$.
+  By (5.18i,ii), $B$ is a valuation ring, and hence local with maximal ideal $\m\lideal B$.
+  Let $\n:=A\cap \m$ be the contraction of $\m$ by $A\inj B$, and consider the localization $A_\n\subset B$.
+  If $f\in B\setminus A$, then $f^{-1}\in A$, so that $f\in B^\times = B\setminus \m$ implies $f=(f^{-1})^{-1}\in A_\n$, whence $B\subset A_\n$.
 \end{proof}
 
 \begin{enumerate}
@@ -261,31 +383,171 @@
       In other words, $\Gamma$ is a totally ordered abelian group.
       It is called the \emph{value group of $A$}.
 
-      Let $\upsilon:K^\times\to \Gamma$ be the canonical homomorphism.
-      Show that $\upsilon(x+y)\geqs \min(\upsilon(x), \epsilon(y))$ for all $x,y\in K^\times$.
+      Let $v:K^\times\to \Gamma$ be the canonical homomorphism.
+      Show that $v(x+y)\geqs \min(v(x), v(y))$ for all $x,y\in K^\times$.
     }
 \end{enumerate}
 
 \begin{proof}
+  Clearly $\geqs$ is reflexive and transitive.
+  If $\xi\geqs \eta$ and $\eta\geqs \xi$, then $xy^{-1}\in A$ and $yx^{-1}\in A$ implies $xy^{-1}\in A^\times$, so that $\xi=\eta$ gives us anti-symmetry.
+  It is total by definition of a valuation ring.
+  Now, we show it is compatible with the group structure.
+  Let $\xi\geqs \eta$, $\omega\in \Gamma$, and take representatives $x,y,z\in K$.
+  Then $(xz)(yz)^{-1}=xy^{-1}\in A$ implies $\xi\omega\geqs \eta\omega$.
+
+  Suppose, without loss of generality, that $v(x)\geqs v(y)$, i.e. $xy^{-1}\in A$.
+  Then 
+  \[
+    (x+y)y^{-1}=xy^{-1}+1\in A
+  \]
+  implies $v(x + y)\geqs v(y)$, as desired.
+  Then $d(x,y):= -v(x-y)$ defines an ultrametric on $K$, thus giving $K$ the structure of a non-archimedean field.
 \end{proof}
 
 \begin{enumerate}
   \item[5.31] {
       Conversely, let $\Gamma$ be a totally ordered abelian group (written \emph{additively}), and let $K$ be a field.
-      A \emph{valuation of $K$ with values in $\Gamma$} is a mapping $\upsilon:K^\times \to \Gamma$ such that
+      A \emph{valuation of $K$ with values in $\Gamma$} is a mapping $v:K^\times \to \Gamma$ such that
       \begin{enumerate}
-        \item $\upsilon(xy)= \upsilon(x)+\upsilon(y)$,
-        \item $\upsilon(x+y)\geqs \min(\upsilon(x),\upsilon(y))$,
+        \item $v(xy)= v(x)+v(y)$,
+        \item $v(x+y)\geqs \min(v(x),v(y))$,
       \end{enumerate}
       for all $x,y\in K^\times$.
-      Show that the set of elements $x\in K$ such that $x=0$ or $\upsilon(x)\geqs 0$ is a valuation ring of $K$.
-      This ring is called the valuation ring of $\upsilon$, and the subgroup $\upsilon(K^\times)$ is the \emph{value group} of $\upsilon$.
+      Show that the set of elements $x\in K$ such that $x=0$ or $v(x)\geqs 0$ is a valuation ring of $K$.
+      This ring is called the valuation ring of $v$, and the subgroup $v(K^\times)$ is the \emph{value group} of $v$.
 
       Thus, the concepts of valuation ring and valuation are essentially equivalent.
     }
 \end{enumerate}
 
 \begin{proof}
+  Define $A:=\{x\in K:x=0\text{ or }v(x)\geqs 0\}$.
+  Then $0\in A$, $A$ is additive by (b), and multiplicative by (a).
+  If $x\in K^\times$, then 
+  \[
+    v(x)+v(x^{-1}) = v(1)=0
+  \]
+  implies either $v(x)\geqs 0$ or $v(x^{-1})\geqs 0$.
+  That is, $x\in A$ or $x^{-1}\in A$.
+  We conclude that $A$ is indeed a valuation ring of $K$.
+\end{proof}
+
+\begin{enumerate}
+  \item[5.32] {
+      Let $\Gamma$ be a totally ordered abelian group.
+      A subgroup $\Delta\leqs\Gamma$ is \emph{isolated} in $\Gamma$ if, whenever $0\leqs \beta\leqs \alpha$ and $\alpha\in \Delta$, we have $\beta\in \Delta$.
+      Let $A$ be a valuation ring of a field $K$, with value group $\Gamma$.
+      If $\p$ is a prime ideal of $A$, show that $v(A\setminus \p)$ is the set of elements $\geqs 0$ in an isolated subgroup $\Delta\leqs \Gamma$, and that the mapping so defined of $\Spec A$ into isolated subgroups of $\Gamma$ is surjective.
+
+      If $p\lideal A$ is prime, what are the value groups of the valuation rings $A/\p$, $A_\p$?
+    }
+\end{enumerate}
+
+\begin{proof}
+  Suppose $\alpha=v(a)\in v(A\setminus \p)$, and let $0\leqs \beta\leqs \alpha$ for $\beta=v(b)\in v(A)$.
+  Then $ab^{-1}\in A$, so $b\in A\setminus \p$, as otherwise $a=(ab^{-1})b\in \p$.
+  Hence, $\beta\in v(A\setminus \p)$.
+
+  Now, let $\Delta\leqs \Gamma$ be an isolated subgroup, and consider $\p:=v^{-1} (\Gamma\setminus\Delta)\cup\{0\}$.
+  Additivity is clear.
+  If $b\in v^{-1}(\Gamma\setminus\Delta)$ and $a\in A\setminus\{0\}$, then $v(ab)=v(a)+v(b)\geqs v(b)\geqs 0$, so $v(ab)\notin \Delta$ gives us that $\p$ is an ideal.
+  Finally, if $a,b\in A\setminus \p$, then $v(ab)=v(a)+v(b)\in \Delta$ implies $ab\in A\setminus \p$, whence $\p$ is prime.
+  It is clear that $\p\mapsto \Gamma$ under the mapping of $\Spec A$.
+
+  The value group of $A_\p$ is
+  \begin{align*}
+    \frac{K^\times}{A_\p^\times}
+    &= \frac{K^\times}{A_\p\setminus \p A_\p} \\
+    &= \frac{K^\times/A^\times}{(A_\p\setminus \p A_\p)/A^\times} \\
+    &= \frac{\Gamma}{\pm v(A\setminus \p)} \\
+    &= \Gamma/\Delta.
+  \end{align*}
+  Dually, the value group of $A/\p$ is
+  \begin{align*}
+    \frac{\Frac(A/\p)}{(A/\p)^\times}
+    &= 
+  \end{align*}
+\end{proof}
+
+\begin{enumerate}
+  \item[5.33] {
+      Let $\Gamma$ be a totally ordered abelian group, $k$ any field, and $A:=k[\Gamma]$ the group algebra of $\Gamma$ over $k$.
+      Show that $A$ is an integral domain.
+
+      If $u=\lambda_1\alpha_1+\cdots+\lambda_n\alpha_n$ is any nonzero element of $A$, where each $\lambda_i\neq0$ and $\alpha_1<\cdots<\alpha_n$, define $v_0(u):=\alpha_1$.\footnote{This arises from the natural $\Gamma$-graded structure of $k[\Gamma]$.}
+      Show that $v_0:A\setminus\{0\}\to \Gamma$ satisfies conditions (a) and (b) of (Ex. 5.31).
+      
+      Let $K$ be the fraction field of $A$.
+      Show that $v_0$ can be uniquely extended to a valuation $v$ of $K$, and that the value group of $v$ is precisely $\Gamma$.
+    }
+\end{enumerate}
+
+\begin{proof}
+  Take $u,u\in A$ nonzero and write
+  \begin{align*}
+    u &=\lambda_1x_{\alpha_1}+\cdots +\lambda_mx_{\alpha_m}, \\
+    u'&=\lambda_1'x_{\alpha_1'}+\cdots +\lambda_n'x_{\alpha_n'}
+  \end{align*}
+  for $\lambda_i,\lambda_i'\neq 0$ and $\alpha_1<\cdots \alpha_m$, $\alpha_1'<\cdots \alpha_n'$.
+  Suppose by way of contradiction that
+  \begin{align*}
+    0&= uu' \\
+     &= \sum_{i=1}^m\sum_{j=1}^n \lambda_i\lambda'_j x_{\alpha_i+\alpha_j'}.
+  \end{align*}
+  Then $\alpha_1+\alpha_1'<\alpha_i+\alpha_j'$ for all $i,j\neq 1$, so $\lambda_1\lambda_1'x_{\alpha_1+\alpha_1'}=0$ implies $\lambda_1=0$ or $\lambda_1'=0$, a contradiction.
+
+  Let $u,u'\in A$ nonzero. 
+  By the above, $uu'=\lambda_1\lambda_1'x_{\alpha_1+\alpha_1'}+\cdots$, so $v_0(uu')=\alpha_1+\alpha_2$ gives us (a).
+  For (b), we allow $m,n=0$ and induct on $k=\#\{i\mid \lambda_i+\lambda_i'=0, \alpha_i=\alpha_i'\}$.
+  If $k=0$, then clearly $v_0(u+u')=\min\{v_0(u),v_0(u')\}$.
+  If $k=m=n$, then $u+u'=0$, so the result holds trivially.
+  If only one of $m,n=0$, then without loss of generality $n=0$, so $v_0(u+u')=v_0(u)=\min(v_0(u),\infty)$.
+  Otherwise, $v_0(u+u')=v_0(u''+u''')$ for $u''=u-\lambda_1x_{\alpha_1}$, $u'''=u'-\lambda_1x_{\alpha_1}$, and $k'=k-1$, so
+  \begin{align*}
+    v_0(u+u') &= v_0(u''+u''') \\
+            &\geqs \min(v_0(u''),v_0(u''')) \\
+            &\geqs \min(v_0(u),v_0(u')),
+  \end{align*}
+  whence the result follows by induction.
+
+  Take $K=\Frac A$.
+  Then for any $x,y\in A$ and $y\neq 0$, 
+  \[
+    v(x) = v((xy^{-1})y)= v(xy^{-1})+v(y)
+  \]
+  forces $v(xy^{-1})=v_0(x)-v_0(y)$.
+  Clearly this is a valuation on $K$, and $v:K^\times\to \Gamma$ is surjective by construction, so $\Gamma$ is the valuation group of $v$.
+\end{proof}
+
+\begin{enumerate}
+  \item[5.34] {
+      Let $A$ be a valuation ring and $K$ its field of fractions.
+      Let $f:A\to B$ be a ring homomorphism such that $f^*:\Spec B\to \Spec A$ is a closed mapping.
+      Then if $g:B\to K$ is any $A$-algebra homomorphism (i.e., $g\circ f$ is the embedding $A\inj K$), we have $g(B)=A$.
+    }
+\end{enumerate}
+
+\begin{proof}
+  Set $C:= g(B)$.
+  $g$ an $A$-algebra homomorphism gives us $A\subset C\subset K$, whence $C=A_\p$ for some prime $\p\lideal A$ by (Ex. 5.29).
+  Now, consider the maximal ideal $\n=\ker g\lideal B$.
+  (Ex. 5.10a) says that $f$ has the going-up property, so $\n^c\lideal A$ is maximal.
+  $A$ is local by (5.18i), so $\n^c=\m$ is the unique maximal ideal of $A$.
+
+  $g:B\to A_\p$ must map units to units, so $g(\n)\supset \p A_\p$.
+  Then $\m \supset \p A_\p$
+  
+  \begin{align*}
+    \p
+    &= (g\circ f)^{-1}(\p A_\p) \\
+    &= f^{-1}(g^{-1}(\p A_\p)) \\
+    &
+  \end{align*}
+  We have
+  \begin{align*}
+    g(\n)=(g\circ f)(\m)=\m
+  \end{align*}
 \end{proof}
 
 \begin{enumerate}
@@ -300,6 +562,10 @@
 \end{enumerate}
 
 \begin{proof}
+  Suppose first that $B$ is an integral domain, and that $f:A\to B$ has the above property.
+  Take $x\in B$, and consider $C=A[x]$.
+  Then $f^*:\Spec B\to \Spec A[x]$, so $f:A[x]\to B$ has the the going-up property by (Ex. 5.10a).
+  
 \end{proof}
 
 \end{document}
