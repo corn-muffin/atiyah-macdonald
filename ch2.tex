@@ -1,0 +1,172 @@
+\documentclass[12pt]{amsart} 
+\usepackage{amsfonts}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{pgf,tikz,tikz-cd}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry}
+\usepackage{array}
+\usepackage{lipsum}
+\usepackage{dsfont}
+\usepackage{stmaryrd}
+
+%\graphicspath{ {./diagrams/} }
+
+\input{./latex-preamble/cm-preamble.tex}
+
+\newtheorem*{lemma}{Lemma}
+
+\begin{document}
+
+{Atiyah and Macdonald} \hfill {05-19-2026}
+
+\bigskip\bigskip
+
+\begin{center}
+
+{\sc Chapter 2}
+
+\end{center}
+
+\begin{center}
+
+  {Noah Parker} %\footnote{Collaborated with Kalev Martinson and Frank :).}}
+    
+\end{center}
+
+\bigskip
+
+\begin{enumerate}
+	\item[1.] {
+      Show that $(\ZZ/m\ZZ)\otimes_\ZZ(\ZZ/n\ZZ)\cong 0$ if $m,n$ are coprime.
+    }
+\end{enumerate}
+
+\begin{proof}
+  If $m,n$ are coprime, then choose $a,b$ such that $am+bn= 1$.
+  Then
+  \begin{align*}
+    1\otimes 1 &= (am+bn)\otimes (am+bn) \\
+               &= bn\otimes am \\
+               &= bnm\otimes a \\
+               &= 0.
+  \end{align*}
+\end{proof}
+
+\begin{enumerate}
+	\item[2.] {
+      Let $\a\lideal A$ and $M$ an $A$-module.
+      Show that $(A/\a)\otimes_A M\cong M/\a M$.
+    }
+\end{enumerate}
+
+\begin{proof}
+  We have exact sequences
+  \begin{align*}
+    0\to &\a\to A\to A/\a\to 0 \\
+         &\a M\to M\to (A/\a)\otimes_A M\to 0,
+  \end{align*}
+  but $\a M\to M$ is injective, whence we conclude our result.
+\end{proof}
+
+\begin{enumerate}
+	\item[3.] {
+      Let $A$ be a local ring, $M$ and $N$ finitely generated $A$-modules.
+      Prove that if $M\otimes N=0$, then $M=0$ or $N=0$.
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+% \begin{enumerate}
+% 	\item[4.] {
+%     }
+% \end{enumerate}
+% 
+% \begin{proof}
+% \end{proof}
+
+% \begin{enumerate}
+% 	\item[5.] {
+%     }
+% \end{enumerate}
+% 
+% \begin{proof}
+% \end{proof}
+
+\begin{enumerate}
+  \item[10.] {
+      Let $A$ be a ring and $\a$ an ideal contained in the Jacobson radical of $A$;
+      let $M$ be an $A$-module and $N$ a finitely generated $A$-module, and let $u:M\to N$ be a homomorphism.
+      If the induced homomorphism $M/\a M\to N/\a N$ is surjective, then $u$ is surjective.
+    }
+\end{enumerate}
+
+\begin{proof}
+  Suppose that $u(M)/\a u(M) = N/\a N$.
+  Then
+  \begin{align*}
+    u(M)
+  \end{align*}
+  \begin{align*}
+    \a (N/u(M))
+    &= \frac{\a N+u(M)}{u(M)} \\
+    &= \frac{u(M)}{\a N\cap u(M)} \\
+    &= \frac{u(M)}{\a u(M)}
+  \end{align*}
+  something is wrong here :/
+\end{proof}
+
+\begin{enumerate}
+  \item[16.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[17.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[18.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[19.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[20.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\begin{enumerate}
+  \item[21.] {
+    }
+\end{enumerate}
+
+\begin{proof}
+\end{proof}
+
+\end{document}

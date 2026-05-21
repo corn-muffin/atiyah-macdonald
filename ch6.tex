@@ -9,7 +9,7 @@
 
 \begin{document}
 
-{Atiyah-MacDonald} \hfill {4-10-2026}
+{Atiyah-MacDonald} \hfill {5-19-2026}
 
 \bigskip\bigskip
 
@@ -21,7 +21,7 @@
 
 \begin{center}
 
-  {Noah Parker} %\footnote{Collaborated with Kalev Martinson and Frank :).}}
+  {Noah Parker} 
     
 \end{center}
 
@@ -38,10 +38,42 @@
 \end{enumerate}
 
 \begin{proof}
-  (a) Consider the filtration $\ker u\subset \ker u^2\subset\cdots$.
-  $M$ Noetherian gives us $n\geqs 1$ such that $\ker u^n = \ker u^{n+r}$ for all $r\geqs 0$.
-  Then
+  (a) Consider the filtration $\ker u\subset \ker u^2\subset\cdots$, and the associated complex of modules
+  \[
+    %\cdots \to\frac{\ker u^n}{\ker u^{n+1}}\to 
+    \cdots \to \frac{\ker u^2}{\ker u} \xrightarrow{~~u~~} \ker u \to 0.
+  \] 
+  Note that $u:M\to M$ is surjective $u^{-1}(\ker u^k)= \ker u^{k+1}$, so each of the above maps is surjective.
+  It follows by induction that the complex is zero if and only if it is bounded.
+  $M$ Noetherian gives us $n>0$ such that $\ker u^n = \ker u^{n+1}$, whence the complex is bounded, and so $\ker u=0$ as desired.
+
+  (b) Consider the filtration $\cdots \subset \im u^2\subset \im u$, and the associated complex of modules
+  \[
+    %\cdots \to\frac{\ker u^n}{\ker u^{n+1}}\to 
+    0\to \cok u \xrightarrow{~~u~~} \frac{\im u}{\im u^2} \to \cdots
+  \] 
+  The kernel of each map is of the form $u^{-1}(\im u^{k+1})= u^{-1}(u(\im u^k)))=\im u^k$ by injectivity of $u$, so each map is injective.
+  It follows by induction that the complex is zero if and only if it is bounded.
+  $M$ Artinian gives us $n> 0$ such that $\im u^n = \im u^{n+1}$, whence the complex is bounded, and so $\cok u=0$ as desired.
 \end{proof}
+
+\begin{enumerate}
+  \item[6.2] {
+    Let $M$ be an $A$-module.
+    If every non-empty set of finitely generated submodules of $M$ has a maximal element, then $M$ is Noetherian.
+  }
+\end{enumerate}
+
+\begin{proof}
+  Let $\Sigma$ be a non-empty set of submodules of $M$, and let $\Sigma'$ be the set of finitely generated submodules of elements of $\Sigma$.
+\end{proof}
+
+% \begin{enumerate}
+%   \item[6.3] {
+%     Let $M$ be an $A$-module and let $N_1$, $N_2$ be submodules of $M$.
+%     If $M/N_1$ and $M/N_2$ are Noetherian (Artinian), then so is $M/(N_1\cap N_2)$.
+%   }
+% \end{enumerate}
 
 \begin{enumerate}
 	\item[6.4.] {
@@ -52,10 +84,31 @@
     }
 \end{enumerate}
 
+\begin{proof}
+  
+\end{proof}
+
 \begin{enumerate}
 	\item[6.11.] {
-      Let $f:A\to B$ be a ring homomorphism and suppose that $f^*:\Spec B\to \Spec A$ is a closed mapping if and only if $f$ has the going up property (5, Ex. 10).
+      Let $f:A\to B$ be a ring homomorphism and suppose that $\Spec B$ is a noetherian space.
+      Prove that $f^*:\Spec B\to \Spec A$ is a closed mapping if and only if $f$ has the going up property (5, Ex. 10).
     }
 \end{enumerate}
+
+\begin{proof}
+  
+\end{proof}
+
+\begin{enumerate}
+  \item[6.12] {
+      Let $A$ be a ring such that $\Spec A$ is Noetherian.
+      Show the set of prime ideals of $A$ satisfies the ascending chain ocndition.
+      Is the converse true?
+    }
+\end{enumerate}
+
+\begin{proof}
+  
+\end{proof}
 
 \end{document}

@@ -7,6 +7,8 @@
 
 \newtheorem{lemma}{Lemma}
 
+\newcommand{\Tor}{\mb{Tor}}
+
 \begin{document}
 
 {Atiyah-MacDonald} \hfill {4-10-2026}
@@ -21,7 +23,7 @@
 
 \begin{center}
 
-  {Noah Parker} %\footnote{Collaborated with Kalev Martinson and Frank :).}}
+  {Noah Parker} 
     
 \end{center}
 
@@ -31,7 +33,7 @@
 	\item[7.1.] {
       Let $A$ be a non-Noetherian Ring and let $\Sigma$ be the set of ideals in $A$ which are not finitely generated.
       Show that $\Sigma$ has maximal elements, and that the maximal elements of $\Sigma$ are prime ideals.
-      Hence, a ring in which every prime ideal is finitely generated is Noetherian.
+      Hence, a ring in which every prime ideal is finitely generated is Noetherian (I. S. Cohen).
     }
 \end{enumerate}
 
@@ -39,10 +41,66 @@
   
 \end{proof}
 
+% \begin{enumerate}
+%   \item[7.2] {
+%     Let $A$ be a Noetherian ring and let $f=\sum_{n=0}^\infty a_nx^n\in A[[x]]$.
+%     Prove that $f$ is nilpotent if and only if each $a_n$ is nilpotent.
+%     }
+% \end{enumerate}
+
+\begin{enumerate}
+  \item[7.3] {
+      Let $\a$ be an irreducible ideal in a ring $A$.
+      Then the following are equivalent:
+      \begin{enumerate}
+        \item $\a$ is primary;
+        \item for every multiplicatively closed subset $S$ of $A$, we have $(S^{-1}\a)^c=(\a:x)$ for some $x\in S$;
+        \item the sequence $(\a:x^n)$ is stationary, for every $x\in A$.
+      \end{enumerate}
+    }
+\end{enumerate}
+
 \begin{enumerate}
 	\item[7.5.] {
       Let $A$ be a Noetherian ring, $B$ a finitely generated $A$-algebra, $G$ a finite group of $A$-automorphism of $B$, and $B^G$ the set of all elements of $B$ which are left fixed by every element of $G$.
       Show that $B^G$ is a finitely generated $A$-algebra.
+    }
+\end{enumerate}
+
+\begin{enumerate}
+  \item[7.6] {
+      If a finitely generated ring $K$ is a field, it is a finite field.
+    }
+\end{enumerate}
+
+\begin{enumerate}
+  \item[7.8] {
+      If $A[x]$ is Noetherian, is $A$ necessarily Noetherian.
+    }
+\end{enumerate}
+
+\begin{enumerate}
+  \item[7.9] {
+      Let $A$ be a ring such that
+      \begin{enumerate}
+        \item for each maximal ideal $\m$ of $A$, the local ring $A_\m$ is Noetherian;
+        \item for each $x\neq 0$ in $A$, the set of maximal ideals of $A$ which contain $x$ is finite.
+      \end{enumerate}
+      Show that $A$ is Noetherian.
+    }
+\end{enumerate}
+
+\begin{enumerate}
+  \item[7.12] {
+      Let $A$ be a ring and $B$ a faithfully flat $A$-algebra (Ex. 2.6).
+      If $B$ is Noetherian, show that $A$ is Noetherian.
+    }
+\end{enumerate}
+
+\begin{enumerate}
+  \item[7.13] {
+      Let $f:A\to B$ be a ring homomorphism of finite type and let $f^*:\Spec B\to \Spec A$ be the mapping associated with $f$.
+      Show that the fibers of $f^*$ are Noetherian subspaces of $\Spec B$.
     }
 \end{enumerate}
 
@@ -71,5 +129,78 @@
       In other words, flat = locally free.
     }
 \end{enumerate}
+
+% \begin{enumerate}
+%   \item[7.18] {
+%       Let $A$ be a Noetherian ring, $\p$ a prime ideal of $A$, and $M$ a finitely generated $A$-module.
+%       Show that the following are equivalent:
+%       \begin{enumerate}
+%         \item $\p$ belongs to $0$ in $M$;%todo what the fuck is he saying
+%         \item there exists $x\in M$ such that $\Ann(x)=\p$;
+%         \item there exists a submodule of $M$ isomorphic to $A/\p$.
+%       \end{enumerate}
+% 
+%       Deduce that there exists a chain of submodules
+%       \[
+%         0=M_0\subset M_1\subset\cdots\subset M_r=M
+%       \] 
+%       such that each quotient $M_i/M_{i-1}$ is of the form $A/\p_i$, where $\p_i$ is a prime ideal of $A$.
+%     }
+% \end{enumerate}
+% 
+% \begin{proof}
+%   (b)$\implies$(c) is clear
+% \end{proof}
+
+\begin{enumerate}
+  \item[7.20] {
+      Let $X$ be a topological space and let $\sF$ be the smallest collection of subsets of $X$ which contain all open subsets of $X$ and is closed with respect to the formation of finite intersections and complements.
+      \begin{enumerate}
+        \item Show that a subset $E$ of $X$ belongs to $\sF$ if and only if $E$ is a finite union of sets of the form $U\cap C$, where $U$ is open and $C$ is closed.
+        \item Suppose that $X$ is irreducible and let $E\in \sF$.
+          Show that $E$ is dense in $X$ if and only if $E$ contains a non-empty open set in $X$.
+      \end{enumerate}
+    }
+\end{enumerate}
+
+\begin{enumerate}
+  \item[7.21] {
+      Let $X$ be a Noetherian topological space and let $E\subset X$.
+      Show that $E\subset \sF$ if and only if, for each irreducible closed set $X_0\subset X$, either $\ol{E\cap X_0}\neq X_0$ or else $E\cap X_0$ contains a non-empty open subset of $X_0$.
+      The sets belonging to $\sF$ are called the constructible subsets of $X$.
+    }
+\end{enumerate}
+
+\begin{enumerate}
+  \item[7.22] {
+      Let $X$ be a Noetherian topological space and let $E$ be a subset of $X$.
+      Show that $E$ is open in $X$ if and only if, for each irreducible closed subset $X_0$ in $X$, either $E\cap X_0=\0$ or $E\cap X_0$ contains a non-empty open subset of $X_0$.
+    }
+\end{enumerate}
+
+\begin{enumerate}
+  \item[7.23] {
+      Let $A$ be a Noetherian ring, $f:A\to B$ a ring homomorphism of finite type (so that $B$ is Noetherian).
+      Let $X=\Spec A$, $Y=\Spec B$, and let $f^*:Y\to X$ be the mapping associated with $f$.
+      Then the imamge under $f^*$ of a constructible subset $E$ of $Y$ is a constructible subset of $X$.
+    }
+\end{enumerate}
+
+\begin{enumerate}
+  \item[7.24] {
+      With the notation and hypotheses of (Ex. 7.23), $f^*$ is an open mapping if and only if $f$ has the going down property.
+    }
+\end{enumerate}
+
+\begin{enumerate}
+  \item[7.25] {
+      Let $A$ be Noetherian, $f:A\to B$ of finite type and flat.
+      Then $f^*:\Spec B\to \Spec A$ is an open mapping.
+    }
+\end{enumerate}
+
+\begin{proof}
+  By (Ex. 5.11), $f$ has the going down property, whence $f^*$ is an open mapping by (Ex. 7.24).
+\end{proof}
 
 \end{document}
