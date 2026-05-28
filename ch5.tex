@@ -7,6 +7,8 @@
 
 \newtheorem{lemma}{Lemma}
 
+\renewcommand{\l}{\fr{l}} %erm does this break stuff
+
 \begin{document}
 
 {Atiyah-MacDonald} \hfill {5-18-2026}
@@ -298,7 +300,7 @@
 \begin{enumerate}
   \item[5.27] {
       Let $A$,$B$ be two local rings.
-      $B$ is said to \emph{dominate} $A$ if $A$ is a subring of $B$ and the maximal ideal $\m$ of $A$ is contained in the maximal ideal $\n$ of $B$ (or, equivalently, if $m=\n\cap A$).
+      $B$ is said to \emph{dominate} $A$ if $A$ is a subring of $B$ and the maximal ideal $\m$ of $A$ is contained in the maximal ideal $\n$ of $B$ (or, equivalently, if $\m=\n\cap A$).
 
       Let $K$ be a field and let $\Sigma$ be the set of all local subrings of $K$.
       If $\Sigma$ is ordered by the relation of domination, show that $\Sigma$ has maximal elements, and that $A\in \Sigma$ is maximal if and only if $A$ is a valuation ring of $K$.
@@ -530,24 +532,12 @@
 
 \begin{proof}
   Set $C:= g(B)$.
-  $g$ an $A$-algebra homomorphism gives us $A\subset C\subset K$, whence $C=A_\p$ for some prime $\p\lideal A$ by (Ex. 5.29).
-  Now, consider the maximal ideal $\n=\ker g\lideal B$.
-  (Ex. 5.10a) says that $f$ has the going-up property, so $\n^c\lideal A$ is maximal.
-  $A$ is local by (5.18i), so $\n^c=\m$ is the unique maximal ideal of $A$.
-
-  $g:B\to A_\p$ must map units to units, so $g(\n)\supset \p A_\p$.
-  Then $\m \supset \p A_\p$
-  
-  \begin{align*}
-    \p
-    &= (g\circ f)^{-1}(\p A_\p) \\
-    &= f^{-1}(g^{-1}(\p A_\p)) \\
-    &
-  \end{align*}
-  We have
-  \begin{align*}
-    g(\n)=(g\circ f)(\m)=\m
-  \end{align*}
+  $g$ an $A$-algebra homomorphism gives us $A\subset C\subset K$, whence $C$ is a valuation ring by (5.18ii), and both $A$, $C$ are local by (5.18i).
+  Let $\m\lideal A$ and $\n\lideal C$ be their respective maximal ideals.
+  $f$ is closed by hypothesis, while $g:B\to C$ is surjective, and thus a closed embedding.
+  Then the embedding $A\inj C$ is closed, so that $\n^c$ is maximal.
+  We conclude that $\n^c=\m$, so that $C$ dominates $A$, meaning $C=A$ by maximality of valuation rings under domination (Ex. 5.27).
+  Alternatively, (Ex. 5.29) gives us $C=A_\p$, but $\p=\p A_\p^c=\n^c=\m$ implies $C=A_\m=A$.
 \end{proof}
 
 \begin{enumerate}

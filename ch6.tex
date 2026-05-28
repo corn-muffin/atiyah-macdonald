@@ -66,6 +66,13 @@
 
 \begin{proof}
   Let $\Sigma$ be a non-empty set of submodules of $M$, and let $\Sigma'$ be the set of finitely generated submodules of elements of $\Sigma$.
+  Then there is a maximal element $N'\in \Sigma'$, which is in particular finitely generated and contained in some $N\in \Sigma$.
+  %If $N'\subsetneq N$, then we can take $x\in N\setminus N'$, whence $N'\subset (N',x)\subset N$ violates maximality of $N'$.
+  It suffices to show that $N$ is a maximal element of $\Sigma$.
+  
+  Suppose that $N\subsetneq P\in \Sigma$, and take some $x\in P\setminus N$.
+  Then $N'\subsetneq(N',x)\subset P$ is contained in $\Sigma'$, contradicting maximality of $N'$.
+  Hence, $N\in \Sigma$ is maximal, whence $M$ is Noetherian.
 \end{proof}
 
 % \begin{enumerate}
@@ -85,7 +92,20 @@
 \end{enumerate}
 
 \begin{proof}
-  
+  $M$ Noetherian gives us generators $x_1,\ldots,x_n$ of $M$, so that $\a = \bigcap_{i=1}^n \Ann(x_i)$.
+  Further, $M^{\oplus n}$ is Noetherian by 6.46
+  Then we have an $A$-module morphism
+  \begin{align*}
+    \phi: A~ &\to M^{\oplus n} \\
+    r ~&\mapsto (r\cdot x_i)_{i=1}^n
+  \end{align*}
+  with $\ker \phi=\a$, so that $A/\a\cong \im\phi\leqs M^{\oplus n}$ is a Noetherian $A$-module.
+  By (6.6), $A/\a$ is a Noetherian ring, as desired.
+
+  The result does not hold if we replace Noetherian by Artinian.
+  Consider the case of $A=\ZZ$ and $M=G$ the subgroup of $\QQ/\ZZ$ consisting of elements whose order is a power of $p$, where $p$ is a fixed prime.
+  Then $G$ is Artinian, as it has only the subgroups $G_0\subset G_1\subset \cdots G_n\subset\cdots$ of order $p^n$ for each $n\geqs 0$.
+  However $\a = \bigcap_{n\geqs 0} p^n\ZZ=(0)$, so that $A/\a\cong \ZZ/(0)\cong \ZZ$ is not Artinian by considering the chain $(p^n)$ for $n\geqs 0$.
 \end{proof}
 
 \begin{enumerate}
@@ -96,19 +116,39 @@
 \end{enumerate}
 
 \begin{proof}
-  
+  Suppose that $f$ has the going up property.
+  Take a radical ideal $\b\lideal B$.
+  Then
+  \begin{align*}
+    f^*(V(\b))
+  \end{align*}
 \end{proof}
 
 \begin{enumerate}
   \item[6.12] {
       Let $A$ be a ring such that $\Spec A$ is Noetherian.
-      Show the set of prime ideals of $A$ satisfies the ascending chain ocndition.
+      Show the set of prime ideals of $A$ satisfies the ascending chain condition.
       Is the converse true?
     }
 \end{enumerate}
 
 \begin{proof}
-  
+  Let $\p_1\subset \p_2\subset\cdots$ be an ascending chain of prime ideals $\p_n\lideal A$.
+  Then we get a descending chain of closed sets
+  \[
+    V(\p_1)\supset V(\p_2)\supset\cdots
+  \] 
+  in $\Spec A$, which stabilizes by $\Spec A$ Noetherian.
+  Thus, there is $n\geqs 1$ such that $V(\p_n)=V(\p_{n'})$ for all $n'\geqs n$.
+  Prime implies radical, so in fact $\p_n=\p_{n'}$ for all $n'\geqs n$.
+  We conclude that the set of prime ideals of $A$ satisfy the ascending chain condition, as desired.
+
+  Need to show the converse doesn't hold.
+  Must find a non-Noetherian ring with non-Noetherian spectrum such that the prime ideals satisfy ACC.
+  Can't use $k[x_0,\ldots, x_n]$, a
+
+  Consider the ring $C(X)$ of real-valued continuous functions on a compact infinite Hausdorff space $X$.
+  Probably this?
 \end{proof}
 
 \end{document}
