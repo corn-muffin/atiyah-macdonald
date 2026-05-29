@@ -8,6 +8,7 @@
 \newtheorem{lemma}{Lemma}
 
 \renewcommand{\l}{\fr{l}} %erm does this break stuff
+%\renewcommand{\ol}[1]{{\overline{#1}}}
 
 \begin{document}
 
@@ -313,18 +314,21 @@
     \Sigma'= \{(A,f)\mid A\leqs K, \; f:A\to \ol K\}
   \end{align*}
   ordered by restriction.
-  Clearly $\Sigma\subset \Sigma'$ as sets by identifying $A\leqs K$ with $(A,\,A\inj K\inj \ol K)$.
-  %It is clear that $A\leqs_\Sigma B$ implies $(A,\,i:A\inj \ol K)\leqs_{\Sigma'} (B,\,j:B\inj \ol K)$.
-  Suppose $(A,\,i)\leqs_{\Sigma'} (B,\,j)$.
-  Then $A$ is a subring of $A'$, and 
+  $\Sigma\subset \Sigma'$ as sets by identifying $A\leqs K$ with $(A,\,A\inj K\inj \ol K)$.
+  It is clear that $A\leqs_\Sigma B$ implies $(A,\,i:A\inj \ol K)\leqs_{\Sigma'} (B,\,j:B\inj \ol K)$.
+  Suppose, now, that $(A,\,i)\leqs_{\Sigma'} (B,\,j)$.
+  Then $A$ is a subring of $B$, and 
   \begin{align*}
     \m = \ker i = \ker j|_A = \ker j\cap A = \n\cap A
   \end{align*}
   by (5.19), so that $A\leqs_\Sigma B$.
-  %Thus, their poset structures coincide.
+  Thus, their poset structures coincide, and we can use $\leqs$ for both without ambiguity.
 
-  Suppose that $A\in \Sigma$ is maximal.
-  If $(A,i)\leqs_{\Sigma'} (B,g)$, then 
+  Take $(A,i)\in \Sigma\subset \Sigma'$, and let $(A,i)\leqs(B,g)\in \Sigma'$ be a maximal element.
+  By (5.19) $B$ is a local ring with maximal ideal $\m=\ker g$.
+  Then $\ker g$
+  Consider $C=g(B)\subset \ol K$.
+  Then $A=g(A)\subset C\subset \ol K$.
 \end{proof}
 
 \begin{enumerate}
@@ -552,10 +556,53 @@
 \end{enumerate}
 
 \begin{proof}
-  Suppose first that $B$ is an integral domain, and that $f:A\to B$ has the above property.
-  Take $x\in B$, and consider $C=A[x]$.
-  Then $f^*:\Spec B\to \Spec A[x]$, so $f:A[x]\to B$ has the the going-up property by (Ex. 5.10a).
+  Recall that $f:A\to B$ is said to be integral is $f(A)\subset B$ is integral.
+  Let $\pi:A\to A/\ker f$ be the projection and $\ol f:A/\ker f\inj B$ the map with $f=\ol f\circ \pi$.
+  Right exactness of tensor products gives us that $\pi\otimes 1:C\to (A/\ker f)\otimes_A C$ is surjective.
+  Then $(\pi\otimes 1)^*$ is a closed embedding, so
+  \begin{align*}
+    (f\otimes 1)^* = (\pi\otimes 1)^*\circ(\ol f\otimes 1)
+  \end{align*}
+  implies
+  \begin{align*}
+    (\ol f\otimes 1)^*(U) 
+    &= {(\pi\otimes 1)^*}^{-1}((\pi\otimes 1)^*\circ(\ol f\otimes 1)) \\
+    &= {(\pi\otimes 1)^*}^{-1}((f\otimes 1)^*(U)),
+  \end{align*}
+  which is closed whenever $U$ is closed and $f$ satisfies our property.
+  Thus, $\ol f:A/\ker f\inj B$ satisfies our property, so we may reduce to the case of $A\cong f(A)\subset B$.
+
+  Suppose first that $A\subset B$ are integral domains, $B$ has fraction field $K$, and that the inclusion $f:A\inj B$ has the above property.
+  We wish to show that the integral closure of $A$ in $B$ is precisely $B$.
+  It suffices to show that the integral closure $\ol A$ contains $B$.
+  By (5.22), it suffices to show that $B\subset C$ for all valuation rings $A\subset C\subset K$.
+
+  Take $A\subset C\subset K$ to be an arbitrary valuation ring of $K$ containing $A$.
+  Consider the maps $f\otimes 1:C\to B\otimes_A C$ and $g:B\otimes_A C\to K:b\otimes c\mapsto bc$.
+  We have that $g\circ (f\otimes 1):C\to K$ is the embedding, and $(f\otimes 1)^*:\Spec B\otimes_AC\to \Spec C$ is closed.
+  Thus, (Ex. 5.34) gives us $g(B\otimes_A C)= C$, but $B\subset g(B\otimes_A C)$, so $B\subset C$ as desired.
+
+  Now, take $B$ with finitely many minimal prime ideals $\p_1,\ldots, \p_n\lideal B$ and subring $A\subset B$ such that $f:A\inj B$ has the above property.
+  Then each $A\to B\to B/\p_i$ has the above property since each $\pi_i\otimes 1:B\otimes_A C\to (B/\p_i)\otimes_A C$ is surjective and tensor products are functorial.
+  Thus, the $A\to B/\p_i$ are integral, whence $A\to \prod B/\p_i$ is integral by (Ex. 5.6).
   
+  The map $\prod B/\p_i\to B/\sqrt{0}$ given by $(x_i+\p_i)_{i=1}^n\mapsto \sum_ix_i +\sqrt{0}$ is surjective, so $A\to B/\sqrt{0}:= \ol B$ is integral.
+  It suffices, then, to prove the following lemma.
+
+  \begin{lemma}
+    If $\b\lideal B$ is an ideal such that $b\in \b$ implies $b^n\in A$ for some $n>0$, and $A/\b^c\to B/\b$ is integral, then $A\to B$ is integral.
+    In particular, if $A\to B/\sqrt{0}$ is integral, then $A\to B$ is integral.
+  \end{lemma}
+  \begin{proof}
+    Define $\ol A := A/\b^c$ and $\ol B:= B/\b$.
+    Then, for each $x\in B$, we have a monic polynomial $\ol f(t)\in \ol A[t]$ such that $\ol f(\ol x) = \ol 0$.
+    Take $f(t)\in A[t]$ which projects to $\ol f$.
+    Then $f(x)\in \b$, so there exists $n>0$ such that $f(x)^n\in A$.
+    $f(t)$ is monic of positive degree, so $f(t)^n\in A[t]$ is monic of positive degree, whence $f(t)^n-f(x)^n\in A[t]$ is as well.
+    Clearly $x$ is a root of $f(t)^n-f(x)^n$, so that $x$ is integral over $A$, as desired.
+  \end{proof}
+
+  We conclude that $A\to B$ is integral, completing our proof.
 \end{proof}
 
 \end{document}
