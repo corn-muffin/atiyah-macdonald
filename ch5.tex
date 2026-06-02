@@ -24,7 +24,7 @@
 
 \begin{center}
 
-  {Noah Parker} %\footnote{Collaborated with Kalev Martinson and Frank :).}}
+  {Noah Parker} 
     
 \end{center}
 
@@ -309,26 +309,49 @@
 \end{enumerate}
 
 \begin{proof}
-  Consider the poset
-  \begin{align*}
-    \Sigma'= \{(A,f)\mid A\leqs K, \; f:A\to \ol K\}
-  \end{align*}
-  ordered by restriction.
-  $\Sigma\subset \Sigma'$ as sets by identifying $A\leqs K$ with $(A,\,A\inj K\inj \ol K)$.
-  It is clear that $A\leqs_\Sigma B$ implies $(A,\,i:A\inj \ol K)\leqs_{\Sigma'} (B,\,j:B\inj \ol K)$.
-  Suppose, now, that $(A,\,i)\leqs_{\Sigma'} (B,\,j)$.
-  Then $A$ is a subring of $B$, and 
-  \begin{align*}
-    \m = \ker i = \ker j|_A = \ker j\cap A = \n\cap A
-  \end{align*}
-  by (5.19), so that $A\leqs_\Sigma B$.
-  Thus, their poset structures coincide, and we can use $\leqs$ for both without ambiguity.
+  Fix a field $K$.
+  We will begin by showing that $\Sigma$ has maximal elements.
+  By Zorn's lemma, it suffices to show that a chain 
+  \[
+    \begin{matrix}
+      A_1&\leqs & A_2&\leqs &\cdots \\
+      \rotatebox{90}{$\subset$}&&\rotatebox{90}{$\subset$}\\
+      \m_1&\subset & \m_2&\subset &\cdots \\
+    \end{matrix}
+  \] 
+  must have an upper bound in $\Sigma$.
+  We consider the ring $A:=\bigcup A_i$.
+  Because each $A_{i+1}$ dominates $A_i$, the $\m_i$ form an increasing chain of subrings of $A$.
+  Their union $\m:=\bigcup \m_i$ is an ideal, as $f\in A_i$, $x\in \m_j$ implies $fx\in \m_{i+j}$.
+  If $f\in A\setminus \m$, then $f\in A_i-\m_i=A_i^\times$ is a unit, whence $A$ is a local ring with unique maximal ideal $\m$ by.
+  Then $\m\cap A_i=\m_i$ gives us $A_i\leqs A$ for all $i$, so that $A\in \Sigma$ is in fact an upper bound to our chain.
 
-  Take $(A,i)\in \Sigma\subset \Sigma'$, and let $(A,i)\leqs(B,g)\in \Sigma'$ be a maximal element.
-  By (5.19) $B$ is a local ring with maximal ideal $\m=\ker g$.
-  Then $\ker g$
-  Consider $C=g(B)\subset \ol K$.
-  Then $A=g(A)\subset C\subset \ol K$.
+  Suppose that $A<B\in \Sigma$ have ideals $\m\lideal A$ and $\n \lideal B$. 
+  It suffices to show that $A$ is not a valuation ring.
+  Take $f\in B\setminus A$ supplied by $B\neq A$.
+  We have $f^{-1}\notin A$, as otherwise $f^{-1}\in \m\setminus \n$ contradicts $A\leqs B$.
+  Thus, $A$ is not a valuation ring.
+
+  Let $A\in \Sigma$ be maximal, and suppose it is not a valuation ring.
+  We can take $x\in K$ such that $x,x^{-1}\notin A$.
+  Then $(\m,x)\lideal A[x]$ is a proper ideal of $A\subsetneq A[x]$, and is thus contained in some maximal ideal $\n\lideal A[x]$.
+  Localizing at $\n$, we receive a local ring $A':=A[x]_\n\supset A$ with unique maximal ideal $\n':= \n A'\supset \m$.
+  Hence, $A'$ dominates $A$, contradicting maximality of $A$.
+  We conclude that $A$ is indeed a valuation ring.
+  % Consider the poset
+  % \begin{align*}
+  %   \Sigma'= \{(A,f)\mid A\leqs K, \; f:A\to \ol K\}
+  % \end{align*}
+  % ordered by restriction.
+  % $\Sigma\subset \Sigma'$ as sets by identifying $A\leqs K$ with $(A,\,A\inj K\inj \ol K)$.
+  % It is clear that $A\leqs_\Sigma B$ implies $(A,\,i:A\inj \ol K)\leqs_{\Sigma'} (B,\,j:B\inj \ol K)$.
+  % Suppose, now, that $(A,\,i)\leqs_{\Sigma'} (B,\,j)$.
+  % Then $A$ is a subring of $B$, and 
+  % \begin{align*}
+  %   \m = \ker i = \ker j|_A = \ker j\cap A = \n\cap A
+  % \end{align*}
+  % by (5.19), so that $A\leqs_\Sigma B$.
+  % Thus, their poset structures coincide, and we can use $\leqs$ for both without ambiguity.
 \end{proof}
 
 \begin{enumerate}
