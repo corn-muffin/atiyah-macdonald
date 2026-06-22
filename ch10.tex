@@ -6,10 +6,11 @@
 %\graphicspath{ {./diagrams/} }
 
 \newtheorem{lemma}{Lemma}
+\newcommand{\what}{\widehat}
 
 \begin{document}
 
-{Atiyah-MacDonald} \hfill {4-10-2026}
+{Atiyah-MacDonald} \hfill {6-02-2026}
 
 \bigskip\bigskip
 
@@ -21,7 +22,7 @@
 
 \begin{center}
 
-  {Noah Parker} %\footnote{Collaborated with Kalev Martinson and Frank :).}}
+  {Noah Parker} 
     
 \end{center}
 
@@ -29,6 +30,89 @@
 
 \begin{enumerate}
 	\item[10.1.] {
+      Let $\alpha_n:\ZZ/p\ZZ\to \ZZ/p^n\ZZ$ be the injection of abelian groups given by $\alpha_n(1)=p^{n-1}$, and let $\alpha:A\to B$ be the direct sum of all the $\alpha_n$.
+      Show that the $p$-adic completion of $A$ is just $A$ but that the completion of $A$ for the topology induced from the $p$-adic topology of $B$ is the direct \emph{product} of the $\ZZ/p\ZZ$.
+      Deduce that $p$-adic completion is \emph{not} a right-exact functor on the category of all $\ZZ$-modules.
+    }
+\end{enumerate}
+
+\begin{enumerate}
+	\item[10.2.] {
+      In (Ex. 1), let $A_n=\alpha^{-1}(p^nB)$, and consider the exact sequence
+      \[
+        0\to A_n\to A\to A/A_n\to 0.
+      \] 
+      Show that $\dlim$ is not right exact, and compute $\dlim^1A_n$.
+    }
+\end{enumerate}
+
+\begin{enumerate}
+	\item[10.3.] {
+      Let $A$ be a Noetherian ring, $\a$ an ideal, and $M$ a finitely generated $A$-module.
+      Using Krull's Theorem and (Ex. 3.14), prove that
+      \begin{align*}
+        \bigcap_{n=1}^\infty \a^n M = \bigcap_{\m\supset\a}\ker(M\to M_\m),
+      \end{align*}
+      where $\m$ runs over all maximal ideals containing $\a$.
+
+      Deduce that
+      \[
+        \widehat M=0\iff \Supp(M)\cap V(\a)=\0.
+      \] 
+    }
+\end{enumerate}
+
+\begin{proof}
+  By Krull's Theorem, it suffices to show that $x\in \bigcap_{\m\supset \a}\ker(M\to M_\m)$ if and only if $x$ is annihilated by some element of $1+\a$.
+  We have $x\in \ker(M\to M_\m)$ if and only if $(x)_\m=0$.
+  Then, by (Ex. 3.14), $x\in \bigcap_{\m\supset \a}\ker(M\to M_\m)$, implies $\a=\a(x)$.
+  (2.5) gives us that $x$ is annihilated by some element of $1+\a$, as desired.
+
+  Conversely, suppose there is $\alpha\in \a$ with $(1+\alpha)x=0$.
+  Then $(x)/\a(x)=0$ implies $(x)_\m/\a_\m(x)\m=0$ for maximal ideals $\m\supset \a$, whence $(x)_\m=0$ for all $\m\supset \a$ by Nakayama's lemma.
+  Thus, $x\in \bigcap_{\m\supset \a}\ker(M\to M_\m)$, as desired.
+
+  By the above,
+  \begin{align*}
+    \ker (M\to \widehat M)
+      &= \bigcap_{n=1}^\infty \a^n M \\
+      &= \bigcap_{\m\supset \a}\ker(M\to M_\m).
+  \end{align*}
+  For any $\p\in V(\a)$, we have $\a\subset \p\subset \m$ for some $\m$ maximal.
+  Then $A-\m\subset A -\p$ gives us
+  \[
+    \ker(M\to M_\m\to M_\p) \supset \ker(M\to M_\m),
+  \] 
+  whence
+  \begin{align*}
+    \ker(M\to \widehat M)
+      &=\bigcap_{\p\subset \a}\ker(M\to M_\p).
+  \end{align*}
+  Thus, $\Supp(M)\cap V(\a)=\0$ if and only if $M=\ker(M\to \widehat M)$.
+  Clearly $\widehat M=0$ is a sufficient condition.
+  Conversely, if every constant sequence converges to 0, then every every sequence converges to 0, i.e. $\widehat M=0$.
+\end{proof}
+
+% \begin{enumerate}
+% 	\item[10.4.] {
+%       Let $A$ be a Noetherian ring, $\a$ an ideal in $A$, and $\widehat A$ the $\a$-adic completion.
+%       For $x\in A$, let $\widehat x$ be the image of $x$ in $\widehat A$.
+%       Show that
+%       \[
+%         \text{$x$ not a zero-divisor of $A$}\implies \text{$\widehat x$ not a zero-divisor of $\widehat A$.}
+%       \] 
+%       Does this imply that
+%       \[
+%         \text{$A$ is an integral domain}\implies \text{$\widehat A$ is an integral domain?}
+%       \] 
+%     }
+% \end{enumerate}
+
+\begin{enumerate}
+	\item[10.5.] {
+      Let $\a$ be a Noetherian ring, and let $\a$, $\b$ be ideals in $A$.
+      If $M$ is any $A$-module, let $M^\a$, $M^\b$ denote its $\a$-adic and $\b$-adic completions respectively.
+      If $M$ is finitely generated, prove that $(M^\a)^\b\cong M^{\a+\b}$.
     }
 \end{enumerate}
 
@@ -37,18 +121,84 @@
 \end{proof}
 
 \begin{enumerate}
-	\item[10.5.] {
+	\item[10.6.] {
+      Let $A$ be a Noetherian ring and $\a$ an ideal in $A$.
+      Prove that $\a$ is contained in the Jacobson radical of $A$ if and only if every maximal ideal of $A$ is closed for the $\a$-topology.
+      A Noetherian topological ring in which the topology is defined by an ideal in the Jacobson radical is called a \emph{Zariski ring}.
+      Examples are local rings and, by (10.15d), $\a$-adic completions.
     }
 \end{enumerate}
 
+\begin{proof}
+  Suppose that $\m$ is a maximal ideal of $A$ containing $\a$.
+  Then $\m\supset G_0=\a$ is a neighborhood of 0, so 
+  \begin{align*}
+    A\setminus \m = \bigcup_{f\in A\setminus \m} f+\m
+  \end{align*}
+  is open in the $\a$-topology, whence $\m$ is closed.
+
+  % Conversely, suppose every maximal ideal $\m$ is closed in the $\a$-topology, and let $\fR =\bigcap \m$ denote the Jacobson radical of $A$.
+  % We have $1+\fR\subset A^\times$ closed, so that $A\setminus (1+\fR)$ is an open neighborhood of 0.
+  Conversely, suppose $\m$ is closed in the $\a$-topology, and ta
+  Then $1+\m\not\ni 0$ is closed, so $A\setminus (1+\m)$ is a neighborhood of $0$.
+  Thus, 
+  \begin{align*}
+    A\setminus\m
+    &= \bigcup_{f\in A\setminus \m} f+\m
+  \end{align*}
+  is a neighborhood of 0.
+  Thus, $\a^n\subset 1+(A\setminus \m)$ for some $n>0$.
+\end{proof}
+
 \begin{enumerate}
-	\item[10.15.] {
+	\item[10.7.] {
+      Let $A$ be a Noetherian ring, $\a$ an ideal of $A$, and $\widehat A$ the $\a$-adic completion.
+      Prove that $\widehat A$ is faithfully flat over $A$ if and only if $A$ is a Zariski ring (for the $\a$-topology).
     }
 \end{enumerate}
 
-\begin{enumerate}
-	\item[10.16.] {
-    }
-\end{enumerate}
+\begin{proof}
+  By (10.14), $\widehat A$ is flat over $A$.
+  By (10.13), $\what A\otimes M\cong \what M$. 
+  Then it suffices by (3.16) to show that $M\to \what M$ is injective for all finitely gnerated $M$ if and only if $A$ is Zariski.
+  If $A$ is Zariski, then $M\inc \what M$ is injective by (10.19).
+  
+  Conversely, suppose that $M\inc \what M$ is injective for all finitely generated $M$.
+  By (Ex. 10.6), it suffices to show that each maximal ideal of $A$ is closed for the $\a$-topology.
+  Let $\m\lideal A$ be maximal, $\what \m=\m^e$ is 
+  Then 
+  \begin{align*}
+    \a
+      &= \a^{ec} \\
+      &= \what \a^c \\
+      &\subset \
+  \end{align*}
+(Ex. 3.16a) and (10.15)
+\end{proof}
+
+% \begin{enumerate}
+% 	\item[10.8.] {
+%     }
+% \end{enumerate}
+% 
+% \begin{enumerate}
+% 	\item[10.9.] {
+%     }
+% \end{enumerate}
+% 
+% \begin{enumerate}
+% 	\item[10.10.] {
+%     }
+% \end{enumerate}
+% 
+% \begin{enumerate}
+% 	\item[10.11.] {
+%     }
+% \end{enumerate}
+% 
+% \begin{enumerate}
+% 	\item[10.12.] {
+%     }
+% \end{enumerate}
 
 \end{document}
