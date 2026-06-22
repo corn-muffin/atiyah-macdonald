@@ -38,7 +38,20 @@
 \end{enumerate}
 
 \begin{proof}
-  
+  We begin by showing $\Sigma$ has maximal elements.
+  It is nonempty by (6.2), so it suffices to show that each chain $\{I_n\}\subset \Sigma$ has an upper bound in $\Sigma$.
+  Namely, we must show that the ideal $I=\bigcup_n I_n$ is not finitely generated.
+  Suppose not, and take generators $x_1,\ldots, x_m\in I$
+  Each $x_i\in I_{n_i}$, so we have $N\geqs 1$ such that $x_i\in I_N$ for all $i=1,\ldots, m$, whence
+  \begin{align*}
+    I_N\subset I = (x_1,\ldots, x_m)\subset I_N
+  \end{align*}
+  contradicts the assumption that $I_N$ is not finitely generated.
+  Zorn's lemma supplies us with maximal elements of $\Sigma$.
+
+  Take a maximal element $I\in \Sigma$, and suppose $xy\in I$ for $x,y\notin I$.
+  Consider the ideals $(I,x)\supsetneq I$ and $(I,y)\supsetneq I$.
+  Maximality of $I$ implies both are finitely generated, so that $(I,x)(I,y)=(I^2,xI,yI,xy)\subset I$ is finitely generated.
 \end{proof}
 
 % \begin{enumerate}
@@ -60,22 +73,22 @@
     }
 \end{enumerate}
 
-\begin{enumerate}
-	\item[7.5.] {
-      Let $A$ be a Noetherian ring, $B$ a finitely generated $A$-algebra, $G$ a finite group of $A$-automorphism of $B$, and $B^G$ the set of all elements of $B$ which are left fixed by every element of $G$.
-      Show that $B^G$ is a finitely generated $A$-algebra.
-    }
-\end{enumerate}
+% \begin{enumerate}
+% 	\item[7.5.] {
+%       Let $A$ be a Noetherian ring, $B$ a finitely generated $A$-algebra, $G$ a finite group of $A$-automorphism of $B$, and $B^G$ the set of all elements of $B$ which are left fixed by every element of $G$.
+%       Show that $B^G$ is a finitely generated $A$-algebra.
+%     }
+% \end{enumerate}
 
-\begin{enumerate}
-  \item[7.6] {
-      If a finitely generated ring $K$ is a field, it is a finite field.
-    }
-\end{enumerate}
+% \begin{enumerate}
+%   \item[7.6] {
+%       If a finitely generated ring $K$ is a field, it is a finite field.
+%     }
+% \end{enumerate}
 
 \begin{enumerate}
   \item[7.8] {
-      If $A[x]$ is Noetherian, is $A$ necessarily Noetherian.
+      If $A[x]$ is Noetherian, is $A$ necessarily Noetherian?
     }
 \end{enumerate}
 
@@ -90,12 +103,30 @@
     }
 \end{enumerate}
 
+\begin{proof}
+  
+\end{proof}
+
 \begin{enumerate}
   \item[7.12] {
-      Let $A$ be a ring and $B$ a faithfully flat $A$-algebra (Ex. 2.6).
+      Let $A$ be a ring and $B$ a faithfully flat $A$-algebra (Ex. 3.16).
       If $B$ is Noetherian, show that $A$ is Noetherian.
     }
 \end{enumerate}
+
+\begin{proof}
+  Let $f:A\to B$ be a faithfully flat Noetherian $A$-algebra, and take an ideal $\a$ of $A$.
+  (6.2) gives us that $\a^e\subset B$ is finitely generated as a $B$-module, and $B$ faithfully flat implies $\a^{ec}=\a$.
+
+  Take a minimal set of generators $(b_1a_1,\ldots, b_na_n)=\a^e$ with $a_i\in \a$ and $b_i\in B$.
+  For each $j=1,\ldots, n$, we have
+  \begin{align*}
+    (1-b_j'b_j) a_j &=\sum_{i\neq j} b_i'b_i a_i,
+  \end{align*}
+  so $a_j=b_j'b_ja_j$ by minimality.
+  Then the $a_1,\ldots, a_n\in A\subset B$ generate $\a^e$ as a $B$-module, and hence generate $\a^{ec}=\a$ as an $A$-module.
+  We conclude that any submodule $\a$ of $A$ is finitely generated, whence $A$ itself is Noetherian.
+\end{proof}
 
 \begin{enumerate}
   \item[7.13] {
@@ -108,20 +139,53 @@
 	\item[7.15.] {
       Let $A$ be a Noetherian local ring, $\m$ its maximal ideal, and $k$ its residue field, and let $M$ be a finitely generated $A$-module.
       Then the following are equivalent:
-      \begin{enumerate}
+      \begin{enumerate}[label=(\roman*)]
         \item $M$ is free;
         \item $M$ is flat;
         \item the mapping $\m\otimes M\to A\otimes M$ is injective;
-        \item $\Tor^A_I(k,M)=0$.
+        \item $\Tor^A_1(k,M)=0$.
       \end{enumerate}
     }
 \end{enumerate}
 
+\begin{proof}
+  (i)$\implies$(ii):
+  $A$ is flat, and a direct sum of flat $A$-modules is flat.
+
+  (ii)$\implies$(iii):
+  This is clear from the definition of flat.
+
+  (iii)$\implies$(iv):
+  Exactness of
+  \[
+    0\to\m\to A\to k\to 0
+  \] 
+  gives us exactness of
+  \[
+    \Tor^A_1(k,M)\to \m\otimes M\to A\otimes M\to k\otimes M\to 0.
+  \] 
+  The first map is injective by assumption, so in fact $\Tor^A_1(k,M)=0$, as desired.
+
+  (iv)$\implies$(i):
+  $A$ Noetherian gives us $M$ finitely generated, so we can take a minimal set of generators $x_1,\ldots, x_n\in M$ of $M$.
+  Then (iv) allows us to apply $k\otimes_A(\cdot)$ to the short exact sequence $0\to\ker\phi\to A^n\to M\to 0$ and receive a short exact sequence
+  \[
+    0\to \frac{\ker\phi}{\m\ker\phi}\to k^n\to \frac{M}{\m M}\to 0.
+  \] 
+  Any set of generators of $M/\m M$ lifts to a set of generators for $M$ by (2.8).
+  Then minimality of $\{x_i\}_{i=1}^n\subset M$ gives us minimality of the $\{\ol{x}_i\}_{i=1}^n\subset M/\m M$.
+  Hence, $\{\ol{x}_i\}_{i=1}^m$ form a basis of $M/\m M$, so that
+  \[
+    0\cong \ker(k^n\to M/\m M)\cong \frac{\ker\phi}{\m\ker\phi}.
+  \] 
+  It follows by Nakayama's lemma that $\ker\phi=0$, whence $\phi:A^n\to M$ is an isomorphism.
+\end{proof}
+
 \begin{enumerate}
 	\item[7.16.] {
-      Let $A$ be a Noetherian local ring, and let $M$ be a finitely generated $A$-module.
+      Let $A$ be a Noetherian ring, and let $M$ be a finitely generated $A$-module.
       Then the following are equivalent:
-      \begin{enumerate}
+      \begin{enumerate}[label=(\roman*)]
         \item $M$ is a flat $A$-mdoule;
         \item $M_\p$ is a free $A_\p$-module for all $\p\in \Spec A$;
         \item $M_\m$ is a free $A_\m$-module, for all maximal ideal $\m$.
@@ -129,6 +193,10 @@
       In other words, flat = locally free.
     }
 \end{enumerate}
+
+\begin{proof}
+  This is a corollary of (3.10) and (Ex. 7.15).
+\end{proof}
 
 % \begin{enumerate}
 %   \item[7.18] {
@@ -163,11 +231,25 @@
     }
 \end{enumerate}
 
+\begin{proof}
+  (a) Let $E\in \sF$.
+  Then we can write
+  \begin{align*}
+    E
+      &=\left(\bigcap_{i\in I} \left(\bigcap_{j\in J_i}C_k\right)\right)^c
+      \cap\bigcap_{i=1}^{n_1}\left(\right)
+  \end{align*}
+  this sucks
+
+  (b) Clearly any such $E\in \sF$ is dense, as any nonempty open of $X$ is dense.
+  Conversely, take $E=\bigcup_{i=1}^n U_i\cap C_i$ such that $\ol E=X$.
+\end{proof}
+
 \begin{enumerate}
   \item[7.21] {
       Let $X$ be a Noetherian topological space and let $E\subset X$.
       Show that $E\subset \sF$ if and only if, for each irreducible closed set $X_0\subset X$, either $\ol{E\cap X_0}\neq X_0$ or else $E\cap X_0$ contains a non-empty open subset of $X_0$.
-      The sets belonging to $\sF$ are called the constructible subsets of $X$.
+      The sets belonging to $\sF$ are called the \emph{constructible subsets} of $X$.
     }
 \end{enumerate}
 
@@ -182,7 +264,7 @@
   \item[7.23] {
       Let $A$ be a Noetherian ring, $f:A\to B$ a ring homomorphism of finite type (so that $B$ is Noetherian).
       Let $X=\Spec A$, $Y=\Spec B$, and let $f^*:Y\to X$ be the mapping associated with $f$.
-      Then the imamge under $f^*$ of a constructible subset $E$ of $Y$ is a constructible subset of $X$.
+      Then the image under $f^*$ of a constructible subset $E$ of $Y$ is a constructible subset of $X$.
     }
 \end{enumerate}
 
@@ -202,5 +284,48 @@
 \begin{proof}
   By (Ex. 5.11), $f$ has the going down property, whence $f^*$ is an open mapping by (Ex. 7.24).
 \end{proof}
+
+\begin{enumerate}
+  \item[7.26] {
+      Let $A$ be a Noetherian ring and let $F(A)$ denote the set of all isomorphism classes of finitely generated $A$-modules.
+      Let $C$ be the free abelian group generated by $F(A)$.
+      To each short exact sequence $0\to M'\to M\to M''\to 0$ of finitely generated $A$-modules we associate the element $(M')-(M)+(M'')$ of $C$, where $(M)$ is the isomorphism class of $M$.
+      Let $D$ the subgroup of $C$ generated by the \emph{Grothendieck group} of $A$, and denoted by $K(A)$.
+      If $M$ is a finitely generated generated $A$-module, let $\gamma(M)$, or $\gamma_A(M)$, denote the image of $(M)$ in $K(A)$.
+      \begin{enumerate}
+        \item Show that $K(A)$ has the following universal property: for each additive function $\lambda$ on the class of finitely generated $A$-modules, with values in an abelian group $G$, there exists a unique homomorphism $\lambda_0:K(A)\to G$ such that $\lambda(M)=\lambda_0(\gamma(M))$ for all $M$.
+        \item Show that $K(A)$ is generated by the elements $\gamma(A/\p)$, where $\p$ is a prime ideal of $A$.
+        \item If $A$ is a field, or more generally if $A$ is a principle ideal domain, then $K(A)\cong \ZZ$.
+        \item Let $f:A\to B$ be a finite ring homomorphism.
+          Show that restriction of scalars gives rise to a homomorphism $f_!:K(B)\to K(A)$ such that $f_!(\gamma_B(N))=\gamma_A(N)$ for a $B$-module $N$.
+          If $g:B\to C$ is another finite ring homomorphism, show that $(g\circ f)_!=f_!\circ g_!$.
+      \end{enumerate}
+    }
+\end{enumerate}
+
+\begin{enumerate}
+  \item[7.27] {
+      Let $A$ be a Noetherian ring and let $F_1(A)$ be the set of all isomorphism classes of finitely generated \emph{flat} $A$-modules.
+      Repeating the construction of (Ex. 7.26), we obtain a group $K_1(A)$.
+      Let $\gamma_1(M)$ denote the image of $(M)$ in $K_1(A)$.
+      \begin{enumerate}
+        \item Show that tensor products of modules over $A$ induces a commutative ring structure on $K_1(A)$, such that $\gamma_1(M)\cdot\gamma_1(N)=\gamma_1(M\otimes N)$.
+          The identity element of this ring is $\gamma_1(A)$.
+        \item Show that tensor products induces a $K_1(A)$-module structure on the group $K(A)$, such that $\gamma_1(M)\cdot \gamma(N)-\gamma(M\otimes N)$.
+        \item If $A$ is a (Noetherian) local ring, then $K_1(A)\cong \ZZ$.
+        \item Let $f:A\to B$ be a ring homomorphism, $B$ being Noetherian.
+          Show that extension of scalars gives rise to a ring homomorphism $f^!:K_1(A)\to K_1(B)$ such that $f^!(\gamma_1(M))=\gamma_1(B\otimes_A M)$.
+          If $g:B\to C$ is another ring homomorphism (with $C$ Noetherian), then $(g\circ f)^!=g^!\circ f^!$.
+        \item If $f:A\to B$ is a finite ring homomorphism then
+          \[
+            f_!(f^!(x)y)=xf_!(y)
+          \] 
+          for $x\in K_1(A)$, $y\in K(B)$.
+          In other words, regarding $K(B)$ as a $K_1(A)$-module by restriction of scalars, the homomorphism $f^!$ is a $K_1(A)$-module homomorphism.
+        \item We have a group homomorphism $\epsilon:K_1(A)\to K(A)$ given by $\epsilon(\gamma_1(M))=\gamma(M)$.
+          If the ring $A$ is finite dimensional and \emph{regular}, i.e., if all its local rings $A_\p$ are regular, then show that $\epsilon$ is an isomorphism.
+      \end{enumerate}
+    }
+\end{enumerate}
 
 \end{document}
