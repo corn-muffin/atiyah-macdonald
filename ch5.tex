@@ -9,6 +9,7 @@
 
 \renewcommand{\l}{\fr{l}} %erm does this break stuff
 %\renewcommand{\ol}[1]{{\overline{#1}}}
+\newcommand{\fP}{\fr{P}}
 
 \begin{document}
 
@@ -286,6 +287,99 @@
 \begin{proof}
   This is a corollary of (Ex. 3.18) and (Ex. 5.10b).
 \end{proof}
+
+\begin{enumerate}
+  \item[5.12] {
+      Let $G$ be a finite group of automorphisms of a ring $A$, and let $A^G$ denote the subring of $G$-invariants.
+      Prove that $A$ is integral over $A^G$.
+
+      Let $S$ be a multiplicatively closed subset of $A$ such that $\sigma(S)\subset S$ for all $\sigma\in G$, and let $S^G=S\cap A^G$.
+      Show that the action of $G$ on $A$ extends to an action on $S^{-1}A$, and that $(S^G)^{-1}A^G\cong (S^{-1}A)^G$.
+    }
+\end{enumerate}
+
+\begin{proof}
+  Fix $x\in A$, and consider the monic polynomial $f(t)=\prod_{\sigma\in G}(t-\sigma(x))\in A[t]$.
+  We have
+  \begin{align*}
+    \tau(f(t))
+      &=\prod_{\sigma\in G}\tau(t-\sigma(x)) \\
+      &=\prod_{\sigma\in G}(t-\tau\sigma(x)) \\
+      &=f(t),
+  \end{align*}
+  so that $f(t)\in A[t]^G=A^G[t]$.
+  Since $f(x)=0$, we're done.
+
+  We define the $G$ action on $S^{-1}A$ by $\sigma(a/s)=\sigma(a)/\sigma(s)$.
+  $\sigma(s)\in \sigma(S)\subset S$ by assumption.
+  Now, fix $\sigma\in G$ and let $a/s=a'/s'$.
+  We have $s''\in S$ with $s''(as'-a's)=0$, so that
+  \begin{align*}
+    0 &= \sigma(s'')(\sigma(a)\sigma(s')-\sigma(a')\sigma(s))
+  \end{align*}
+  for $\sigma(s'')\in S$ implies $\sigma(a/s)=\sigma(a'/s')$.
+  We conclude that the action is well-defined, and clearly coincides on $\im(A\inc S^{-1}A)$.
+
+  If $a\in A^G$, then $\sigma(a/1)=a/1$.
+  Thus, the natural map $\phi(a)=a/1$ restricts to an injection $\phi:A^G\inc (S^{-1}A)^G$.
+  We wish to show that $\phi$ satisfies the conditions of Corollary (3.2).
+
+  (1) If $s\in S^G$, then
+  \[
+    \sigma(1/s)=1/\sigma(s)=1/s\in (S^{-1}A)^G.
+  \]
+
+  (2) Suppose now that $\phi(a)=0$ for $a\in A^G$.
+  We have some $s\in S$ such that $sa=0$.
+  Then $s'=\prod_{\sigma\in G}\sigma(s)\in S^G$ has $s'a=0$, as desired.
+
+  (3) Let $a/s\in (S^{-1}A)^G$.
+  That is, for any $\sigma\in G$, we can find $s_\sigma\in S$ such that
+  \[
+    s_\sigma(\sigma(a)s-a\sigma(s))=0.
+  \] 
+  A
+\end{proof}
+
+\begin{enumerate}
+  \item[5.13] {
+      In the situation of (Ex. 5.12), let $\p$ be a prime ideal of $A^G$, and let $P$ be the set of prime ideals of $A$ whose contraction is $\p$.
+      Show that $G$ acts transitively on $P$.
+      In particular, $P$ is \emph{finite}.
+    }
+\end{enumerate}
+
+\begin{proof}
+  Let $\q,\q'\in P$ be primes lying over $\p$, and let $\sigma\in G$.
+  $\q$ is prime and $\sigma$ is an isomorphism, so $\sigma(\q)=(\sigma^{-1})^{-1}(\q)$ is prime.
+  Let $x'\in \q'$.
+  Then 
+  \[
+    x:=\prod_{\sigma\in G}\sigma^{-1}(x)\in \p\subset \q',
+  \]
+  so there is some $\sigma\in G$ such that $x'=\sigma(x)\in \sigma(\q)$.
+  This gives us 
+  \[
+    \q'\subset \bigcup_{\sigma\in G}\sigma(\q),
+  \]
+  where each $\sigma(\q)$ is prime.
+  (1.11) gives us $\sigma\in G$ such that $\q'\subset \sigma(\q)$, whence (5.9) and (Ex. 5.12) give us $\q'=\sigma(\q)$.
+\end{proof}
+
+\begin{enumerate}
+  \item[5.14] {
+      Let $A$ be an integrally closed domain, $K$ its field of fractions and $L$ a finite normal separable extension of $K$.
+      Let $G$ be the Galois group of $L$ over $K$ and let $B$ be the integral closure of $A$ in $L$.
+      Show that $\sigma(B)=B$ for all $\sigma\in G$, and that $A=B^G$.
+    }
+\end{enumerate}
+
+\begin{enumerate}
+  \item[5.15] {
+      Let $A,K$ as in (Ex. 5.14), let $L$ be any finite extension field of $K$, and let $B$ be the integral closure of $A$ in $L$.
+      Show that, if $\p$ is any prime ideal of $A$, then the set of prime ideals $\q$ of $B$ which contract to $\p$ is finite (in other words, that $\Spec B\to \Spec A$ has \emph{finite fibers}).
+    }
+\end{enumerate}
 
 \begin{enumerate}
 	\item[5.16.] {
