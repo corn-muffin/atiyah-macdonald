@@ -10,6 +10,7 @@
 \renewcommand{\l}{\fr{l}} %erm does this break stuff
 %\renewcommand{\ol}[1]{{\overline{#1}}}
 \newcommand{\fP}{\fr{P}}
+\newcommand{\Stab}{\mb{Stab}}
 
 \begin{document}
 
@@ -334,11 +335,21 @@
   Then $s'=\prod_{\sigma\in G}\sigma(s)\in S^G$ has $s'a=0$, as desired.
 
   (3) Let $a/s\in (S^{-1}A)^G$.
-  That is, for any $\sigma\in G$, we can find $s_\sigma\in S$ such that
+  That is, we can find $s_\sigma\in S$ for each $\sigma\in G$ such that
   \[
     s_\sigma(\sigma(a)s-a\sigma(s))=0.
   \] 
-  A
+  Taking
+  \[
+    s':=\prod_{\sigma,\tau\in G}\sigma(s_\tau)
+  \] 
+  gives us $s'\in S^G$ such that
+  \begin{align*}
+    s'(\sigma(a)s-a\sigma(s))=0
+  \end{align*}
+  for all $\sigma\in G$.
+
+  Suppose now that $ss'\neq \sigma(ss')=\sigma(s)s'$
 \end{proof}
 
 \begin{enumerate}
@@ -374,12 +385,30 @@
     }
 \end{enumerate}
 
+\begin{proof}
+  Let $x\in B$ have minimal polynomial $f(t)\in A[t]$, let $N:=\Stab_G(x)$, and consider the monic polynomial
+  \[
+    g(t)=\prod_{\sigma N\in G/N}(t-\sigma(x)).
+  \] 
+  Clearly $g(x)=0$,
+  We have $f(\sigma(x))=\sigma(f(x))=0$, since $G$ fixes $A\subset K$.
+  Thus, 
+  \[
+    \deg f\geqs |G|/|\Stab_G(x)|
+  \]
+\end{proof}
+
 \begin{enumerate}
   \item[5.15] {
       Let $A,K$ as in (Ex. 5.14), let $L$ be any finite extension field of $K$, and let $B$ be the integral closure of $A$ in $L$.
       Show that, if $\p$ is any prime ideal of $A$, then the set of prime ideals $\q$ of $B$ which contract to $\p$ is finite (in other words, that $\Spec B\to \Spec A$ has \emph{finite fibers}).
     }
 \end{enumerate}
+
+\begin{proof}
+  Let $G=\Gal(L/K)$. 
+  (5.14) gives us that $A=B^G$, whence the result follows directly from (5.13).
+\end{proof}
 
 \begin{enumerate}
 	\item[5.16.] {
